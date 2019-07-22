@@ -398,10 +398,11 @@ The above copyright notice and this permission notice shall be included in all c
         }
 
 
-        function createToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses) {
+
+        function createToken(name, symbol, decimals, foundation, cap, supply, maxTxs, maxTime, maxAddresses, safety) {
           var found = fnd;
           // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
-          var tx = Factory.createNewToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, {
+          var tx = Factory.createNewToken(name, symbol, decimals, foundation, cap, supply, maxTxs, maxTime, maxAddresses, safety, {
             from: account,
             // gas: "3000000",
             to: factoryAddress,
@@ -431,10 +432,22 @@ The above copyright notice and this permission notice shall be included in all c
         });
 
 
+setTimeout(function() {
+  createToken("test", "TST", 0, ["0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F"], 1000, 10000, 100, 21, 100, false);
+},1000)
 
       </script>
 
 
 </body>
 
-  
+_name, 
+_symbol, 
+_decimals, 
+_foundation,
+_cap,
+_supply,
+_maxTxs,
+_maxTime,
+_maxAddresses,
+_safety
