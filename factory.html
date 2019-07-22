@@ -446,18 +446,18 @@ The above copyright notice and this permission notice shall be included in all c
     */
 
     var userTokens = new Map();
+    var notDone = true;
 
     function getUserTokens() {
       Factory.getUserTokens(web3.eth.accounts[0], (err, arr) => {
             if (!err) {
-              var i;
+              var i = 0;
               while (i != arr.length - 1) {
-                Factory.getContractName( arr[i], (err, name) => {
+                Factory.getContractName(arr[i], (err, name) => {
                   userTokens.set(arr[i], name);
                   i++;
                 });
               }
-              console.log(userTokens);
             }
         });
     }
