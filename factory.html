@@ -179,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="modal-body">
                       <center>
                           <div id="spinning-circle">
-                            <img src="http://i.stack.imgur.com/WbNlQ.jpg">
+                            <img src="https://i.stack.imgur.com/WbNlQ.jpg">
                           </div>
                         </center>
                   </div>
@@ -405,10 +405,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 
-        function createToken(name, symbol, decimals, foundation, cap, supply, maxTxs, maxTime, maxAddresses, safety) {
+        function createToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses) {
           var found = fnd;
           // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
-          var tx = Factory.createNewToken(name, symbol, decimals, foundation, cap, supply, maxTxs, maxTime, maxAddresses, safety, {
+          var tx = Factory.createNewToken(name, symbol, decimals, found, cap, supply, maxTxs, maxTime, maxAddresses, false, {
             from: web3.eth.accounts[0],
             // gas: "3000000",
             to: factoryAddress,
