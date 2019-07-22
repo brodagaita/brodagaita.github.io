@@ -243,7 +243,8 @@ The above copyright notice and this permission notice shall be included in all c
             web3.eth.sendTransaction({ });
         } catch (error) {
             //web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-            web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+            // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+            window.web3 = new Web3(ethereum);
         }
     }
     else if (window.web3) {
