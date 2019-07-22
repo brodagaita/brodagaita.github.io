@@ -233,7 +233,30 @@ The above copyright notice and this permission notice shall be included in all c
 
 
         // web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
-        web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+        // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+
+    window.addEventListener('load', async () => {
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            await ethereum.enable();
+            web3.eth.sendTransaction({ });
+        } catch (error) {
+            //web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+            web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+        }
+    }
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        web3.eth.sendTransaction({/*...*/}); 
+    }
+    else {
+        // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+});
+
         var FactoryContract = web3.eth.contract([
 	{
 		"constant": false,
@@ -345,6 +368,8 @@ The above copyright notice and this permission notice shall be included in all c
             document.getElementById('contract').innerHTML = "Contract address: <a href='https://etherscan.io/address/0x8155b453fa5c6ea9a8083b42edec82951846f7d3' target='_blank'>0x8155b453fa5c6ea9a8083b42edec82951846f7d3</a>."
           });
         }
+
+
 
 
         var nm, sym, dec, cp, sup, txs, tme, adr, saf;
