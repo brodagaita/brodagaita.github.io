@@ -368,8 +368,6 @@ The above copyright notice and this permission notice shall be included in all c
         );
         var factoryAddress = "0xdba32c80a633634718a559077d5ca9f52875ba7b";
         var Factory = FactoryContract.at(factoryAddress);
-        var latest = web3.eth.getBlockNumber();
-        var account = web3.eth.accounts[0];
 
         function pullHeadline() {
           ThreeBox.getHeadline((error, data) => {
@@ -411,7 +409,7 @@ The above copyright notice and this permission notice shall be included in all c
           var found = fnd;
           // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
           var tx = Factory.createNewToken(name, symbol, decimals, foundation, cap, supply, maxTxs, maxTime, maxAddresses, safety, {
-            from: account,
+            from: web3.eth.accounts[0],
             // gas: "3000000",
             to: factoryAddress,
             // value: checkPrice(0),
@@ -433,7 +431,7 @@ The above copyright notice and this permission notice shall be included in all c
         Factory.allEvents({
           fromBlock: web3.eth.defaultBlock
         }, (error, event) => {
-          if (getEvents) {
+          if (event.args.creator == web3.eth.accounts[0]) {
             console.log(event.args);
             document.getElementById('spinning-circle').innerHTML = ""
           } else { }
