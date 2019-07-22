@@ -431,7 +431,7 @@ The above copyright notice and this permission notice shall be included in all c
         Factory.allEvents({
           fromBlock: web3.eth.defaultBlock
         }, (error, event) => {
-          if (event.args.creator == web3.eth.accounts[0]) {
+          if (event.args._creator == web3.eth.accounts[0]) {
             console.log(event.args);
             document.getElementById('spinning-circle').innerHTML = ""
           } else { }
