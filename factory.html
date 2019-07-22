@@ -1,0 +1,414 @@
+<!--
+=========================================================
+ Paper Kit 2 - v2.2.0
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/paper-kit-2
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
+
+ Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img//favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Local Currency
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <style>
+    .black-bg {
+      color: white;
+    }
+
+    .description {
+      color: rgb(26, 26, 26) !important;
+    }
+
+    @media (max-width:959px) and (min-width:400px) {
+      .logos {
+        display: block;
+        margin: 0% !important;
+        max-width: 98%;
+        margin-left: 12% !important;
+      }
+
+      #dvision {
+        margin-left: 15% !important;
+      }
+
+      #bottom {
+        margin-top: -15%;
+      }
+    }
+
+    @media (max-width:399px) {
+      .logos {
+        display: block;
+        margin: 0% !important;
+        max-width: 98%;
+      }
+
+      #dvision {
+        margin-left: 15%;
+      }
+
+      #bottom {
+        margin-top: -15%;
+      }
+    }
+
+    #spinning-circle {
+      animation-name: spinning-circle;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      width: 40px;
+      height: 40px;
+    }
+
+    @-webkit-keyframes spinning-circle {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    #spinning-circle img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+
+</head>
+
+<body class="landing-page sidebar-collapse">
+  <!-- End Navbar -->
+  <div class="page-header" data-parallax="true" style="background-image: url('./assets/img/factory.png');">
+    <div class="filter"></div>
+    <div class="container">
+      <div class="motto text-center">
+        <h1>Token Factory</h1>
+        <center>
+          <h3 id="headline" style="width: 80%; text-align: center"> Create your own local currency from scratch,
+            following our proposed implementation.
+            No code required.</h3>
+          <br>
+          <p id="contract"></p>
+        </center>
+        <br />
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+          </div>
+          <div class="col-lg-12 ml-auto mr-auto">
+            <h2 class="title"> Select one </h2>
+            <br>
+            <button class="btn btn-danger" style="margin-right: 2%;" onclick="loadCreate()">Create new token</button>
+            <button class="btn btn-danger">Manage your tokens</button>
+            <br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ml-auto mr-auto">
+          <div class="form-group"> <label for="exampleFormControlSelect2">Select contract to interact with</label>
+
+            <select multiple class="form-control" id="ff" onchange="loadContract()">
+
+            </select> </div>
+
+        </div>
+      </div>
+
+
+                  <!-- Button trigger modal -->
+
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      Launch demo modal
+                    </button>
+                  
+
+      <div id="selectionSpace">
+
+      </div>
+      </div>
+      </div>
+
+           <!-- Modal -->
+           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Creating your token</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <center>
+                          <div id="spinning-circle">
+                            <img src="http://i.stack.imgur.com/WbNlQ.jpg">
+                          </div>
+                        </center>
+                  </div>
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+
+      <!--   Core JS Files   -->
+      <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+      <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+      <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+      <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+      <script src="./assets/js/web3lib.js" type="text/javascript"></script>
+
+      <script>
+
+        var beginning = '<div class="form-group"> <label for="exampleInputEmail1">';
+        var middle = ' (ETH Address)</label><input type="text" class="form-control" id="'
+        var end = '" aria-describedby="emailHelp" placeholder="0x">   </div>'
+
+        var getEvents = true;
+
+        function loadFields() {
+          console.log('here')
+          var n = document.getElementById("nMembers").value;
+          document.getElementById('foundation').innerHTML = '';
+          for (var i = 0; i < document.getElementById("nMembers").value; i++) {
+            if (i == 0) {
+              document.getElementById('foundation').innerHTML += beginning + "Chairperson" + middle + String('fnd' + (i + 1)) + end;
+            }
+            else if (i == 1) {
+              document.getElementById('foundation').innerHTML += beginning + "Next in Line " + middle + String('fnd' + (i + 1)) + end;
+            }
+            else {
+              document.getElementById('foundation').innerHTML += beginning + "Foundation Member " + (i + 1) + middle + String('fnd' + (i + 1)) + end;
+            }
+          }
+        }
+
+        var create = ' <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <h5> Make sure you have MetaMask downloaded and unlocked </h5> <p> <b>Your address: </b><span>No address detected - Please refresh page</span> </p> <br> <br> <form> <div class="form-group"> <label for="exampleInputEmail1">Token Name</label> <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputPassword1">Token Symbol</label> <input type="text" class="form-control" id="symbol" placeholder="Example: SYMB"> <small id="emailHelp" class="form-text text-muted"> It is suggested to keep the symbol between 3-4 characters. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Decimals</label> <input type="number" class="form-control" id="decimals" placeholder="0" max="18"> <small id="emailHelp" class="form-text text-muted">Up to how many decimals a unit of your token will be divisible to. Example: traditional currencies are divisible up to two decimals (The lowest denomination of a dollar is 1/100 of a dollar, called a cent). <b>Suggested Value: 0</b>. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Cap on ownership</label> <input type="text" class="form-control" id="cap" aria-describedby="emailHelp" placeholder="Example: 5000"> <small id="emailHelp" class="form-text text-muted">Maximum amount of tokens a standard user can have at a given time. Leave this blank if you do not wish to have a cap.</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Initial/Total Supply</label> <input type="number" class="form-control" id="supply" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Number of tokens available from creation (Should correspond to the amount of collateral in a real-world system). This number can be changed later.</small> </div> <br> <h5> The following fields refer to the Tiers of Conversion model. If you are not familiar with the model, please refer to Section 4.5 of this paper. You can also leave the fields blank to use our default values. </h5> <br> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of transactions</label> <input type="number" class="form-control" id="maxTxs" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for time since joining the platform</label> <input type="number" class="form-control" id="maxTime" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Values are in months</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of distinct addresses transacted with</label> <input type="number" class="form-control" id="maxAddresses" aria-describedby="emailHelp" placeholder=""> </div> <br> <h5> Establishing the Foundation </h5> <br> <div class="form-group"> <label for="exampleFormControlSelect2">Number of founding members in Foundation</label> <select multiple class="form-control" id="nMembers" onchange="loadFields()"> <option>1</option> <option>2</option> <option>3</option> <option>4</option> </select> <small id="emailHelp" class="form-text text-muted">More can be added later</small> </div> <div id="foundation"> </div> <div class="form-check"> <label class="form-check-label"> <input class="form-check-input" type="checkbox" id="safety" value=""> Is the Chairperson the creator of the contract? <span class="form-check-sign"> <span class="check"></span> </span> </label> </div> <br> <button onclick="setParameters()" class="btn btn-primary" type="button">Create Token</button> </form> </div></div>'
+
+        function loadCreate() {
+          document.getElementById('selectionSpace').innerHTML = create;
+        }
+
+
+
+        // web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+        web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+        var FactoryContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_symbol",
+				"type": "string"
+			},
+			{
+				"name": "_decimals",
+				"type": "uint8"
+			},
+			{
+				"name": "_cap",
+				"type": "uint256"
+			},
+			{
+				"name": "_supply",
+				"type": "uint256"
+			},
+			{
+				"name": "_maxTxs",
+				"type": "uint256"
+			},
+			{
+				"name": "_maxTime",
+				"type": "uint256"
+			},
+			{
+				"name": "_maxAddresses",
+				"type": "uint256"
+			}
+		],
+		"name": "createNewToken",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_creator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_token",
+				"type": "address"
+			}
+		],
+		"name": "NewTokenCreated",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_contract",
+				"type": "address"
+			}
+		],
+		"name": "getContractName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "getUserTokens",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+        );
+        var factoryAddress = "0xdfd75ca106455338d368bfd84e2c4355bd7d2654";
+        var Factory = FactoryContract.at(factoryAddress);
+        var latest = web3.eth.getBlockNumber();
+        var account = web3.eth.accounts[0];
+
+        function pullHeadline() {
+          ThreeBox.getHeadline((error, data) => {
+            document.getElementById('headline').innerHTML = data;
+            document.getElementById('contract').innerHTML = "Contract address: <a href='https://etherscan.io/address/0x8155b453fa5c6ea9a8083b42edec82951846f7d3' target='_blank'>0x8155b453fa5c6ea9a8083b42edec82951846f7d3</a>."
+          });
+        }
+
+
+        var nm, sym, dec, cp, sup, txs, tme, adr, saf;
+        var fnd = [];
+
+        function setParameters() {
+          nm = document.getElementById('name').value;
+          sym = document.getElementById('symbol').value;
+          dec = document.getElementById('decimals').value;
+          cp = document.getElementById('cap').value;
+          sup = document.getElementById('supply').value;
+          txs = document.getElementById('maxTxs').value;
+          tme = document.getElementById('maxTime').value;
+          adr = document.getElementById('maxAddresses').value;
+          saf = !(document.getElementById('safety').checked);
+          for (var i = 0; i < 4; i++) {
+            if (document.getElementById(String('fnd' + (i + 1))) == null) {
+              fnd.push('0x0000000000000000000000000000000000000000');
+            }
+            else {
+              fnd.push(document.getElementById(String('fnd' + (i + 1))).value);
+            }
+          }
+          createToken(nm, sym, dec, cp, sup, txs, tme, adr);
+        }
+
+
+        function createToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses) {
+          var found = fnd;
+          // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
+          var tx = Factory.createNewToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, {
+            from: account,
+            // gas: "3000000",
+            to: factoryAddress,
+            // value: checkPrice(0),
+            data: ""
+          }, function (err, transactionHash) {
+            if (!err) {
+              $('#exampleModal').modal('toggle');
+              console.log(transactionHash);
+              fnd.length = 0;
+            }
+            else {
+              console.log(err);
+            }
+          }
+          )
+        };
+
+
+        Factory.allEvents({
+          fromBlock: web3.eth.defaultBlock
+        }, (error, event) => {
+          if (getEvents) {
+            console.log(event.args);
+            document.getElementById('spinning-circle').innerHTML = ""
+          } else { }
+        });
+
+
+
+      </script>
+
+
+</body>
+
+  
