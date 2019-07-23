@@ -168,7 +168,7 @@ The above copyright notice and this permission notice shall be included in all c
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modBod">
           <center>
             <div id="spinning-circle">
               <img src="https://i.stack.imgur.com/WbNlQ.jpg">
@@ -429,7 +429,7 @@ The above copyright notice and this permission notice shall be included in all c
     }, (error, event) => {
       if (event.args._creator == web3.eth.accounts[0]) {
         console.log(event.args);
-        document.getElementById('spinning-circle').innerHTML = "<h6> Success! Contract " + event.args._token + " created. </h6>";
+        document.getElementById('mod-bod').innerHTML = "<p> Success! Contract " + event.args._token + " created. </p>";
         document.getElementById('modFoot').innerHTML = ' <div class="left-side"> <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button> </div> <div class="divider"></div> <div class="right-side"> <button type="button" class="btn btn-danger btn-link">Use token</button> </div>';
       } else { }
     });
