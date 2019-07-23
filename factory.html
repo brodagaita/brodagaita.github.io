@@ -453,7 +453,7 @@ The above copyright notice and this permission notice shall be included in all c
       Factory.getUserTokens(web3.eth.accounts[0], (err, arr) => {
             if (!err) {
               userTokens = arr;
-              getContractNames(arr, 0, arr.length-1);
+              getContractNames(arr, 0, arr.length);
             }
         });
     }
