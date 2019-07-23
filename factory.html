@@ -133,7 +133,7 @@ The above copyright notice and this permission notice shall be included in all c
             <h2 class="title"> Select one </h2>
             <br>
             <button class="btn btn-danger" style="margin-right: 2%;" onclick="loadCreate()">Create new token</button>
-            <button class="btn btn-danger">Manage your tokens</button>
+            <button class="btn btn-danger" onclick="loadManage()">Manage your tokens</button>
             <br>
             <br>
             <br>
@@ -141,7 +141,7 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="selector" style="visibility: hidden;">
         <div class="col-md-4 ml-auto mr-auto">
           <div class="form-group"> <label for="exampleFormControlSelect2">Select contract to interact with</label>
 
@@ -447,6 +447,10 @@ The above copyright notice and this permission notice shall be included in all c
 
     var userTokens;
     var contractNames = [];
+
+    function loadManage() {
+      document.getElementById('selector').style.visibility = 'visible';
+    }
 
 
     function getUserTokens() {
