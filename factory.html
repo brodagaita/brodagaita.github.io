@@ -148,7 +148,8 @@ The above copyright notice and this permission notice shall be included in all c
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Launch demo modal
       </button>
-
+    </div>
+  </div>
 
       <div id="selectionSpace">
 
@@ -178,8 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
   </div>
-  </div>
-  </div>
+
 
 
 
@@ -439,7 +439,7 @@ The above copyright notice and this permission notice shall be included in all c
     var contractNames = [];
 
     function loadManage() {
-      document.getElementById('selectionSpace').innerHTML = ' </div> <div class="row" id="selector" style="visibility: hidden;"> <div class="col-md-4 ml-auto mr-auto"> <div class="form-group"> <label for="exampleFormControlSelect2">Select contract to interact with</label> <select multiple class="form-control" id="myTokens" onchange=""> </select> </div> </div> </div>';
+      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="visibility: hidden;"> <div class="col-md-4 ml-auto mr-auto"> <div class="form-group"> <label for="exampleFormControlSelect2">Select contract to interact with</label> <select multiple class="form-control" id="myTokens" onchange=""> </select> </div> </div> </div>';
       getUserTokens();
     }
 
@@ -468,11 +468,17 @@ The above copyright notice and this permission notice shall be included in all c
     }
 
     function setSelector(length) {
-      for (var i = 0; i < length; i++) {
-        var opt = document.createElement("option");
-        opt.innerHTML = contractNames[i] + ' (' + userTokens[i] + ')';
-        opt.value = userTokens[i];
-        document.getElementById('myTokens').appendChild(opt);
+      for (var i = 0; i <= length; i++) {
+        if (i != length) {
+          var opt = document.createElement("option");
+          opt.innerHTML = contractNames[i] + ' (' + userTokens[i] + ')';
+          opt.value = userTokens[i];
+          document.getElementById('myTokens').appendChild(opt);
+        }
+        else {
+          contractNames = [];
+          userTokens = [];
+        }
       }
     }
 
