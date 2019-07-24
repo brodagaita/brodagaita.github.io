@@ -1379,16 +1379,17 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadSelectedContract() {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
-      document.getElementById('selectionSpace').innerHTML = "";
       setTimeout(function() {
       if (document.getElementById('contractInput') == "") {
         contractAddress = document.getElementById('selector').value;
         Token = TokenContract.at(contractAddress);
+        document.getElementById('selectionSpace').innerHTML = "";
         buildTokenDashboard();
       }
       else {
         contractAddress = document.getElementById('contractInput').value;
         Token = TokenContract.at(contractAddress);
+        document.getElementById('selectionSpace').innerHTML = "";
         buildTokenDashboard();
       }
     },500);
