@@ -141,13 +141,6 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
 
-
-
-      <!-- Button trigger modal -->
-
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button>
     </div>
   </div>
 
@@ -184,6 +177,165 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
 
+    <!-- Foundation Options Modal -->
+    <div class="modal fade" id="foundationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Manage Foundation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <center>
+              <h5>You are currently the Chairperson.</h5>
+              <p>Chairperson: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
+              <p>Next in Line: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
+            </center>
+
+            <br>
+            <br>
+            <div class="button-set" style="width: 100%">
+              <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info" onclick="voteToAdd()">Vote</button>
+              <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to add:</label>
+              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="addVal">
+              <br>
+            </div>
+            <br>
+            <div class="button-set" style="width: 100%">
+              <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info" onclick="voteToRemove()">Vote</button>
+              <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to remove:</label>
+              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="removeVal">
+              <br>
+            </div>
+            <br>
+            <div class="button-set" style="width: 100%">
+              <button style="max-width: 20%; float: right; margin-right: 1%;"
+                class="btn btn-sm btn-tiny btn-info" onclick="addToWhitelist()">Add</button>
+              <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Whitelist:</label>
+              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="whitelistVal">
+              <br>
+            </div>
+            <br>
+            <div class="button-set" style="width: 100%">
+              <button style="max-width: 20%; float: right; margin-right: 1%;"
+                class="btn btn-sm btn-tiny btn-info" onclick="addToBlacklist()">Add</button>
+              <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Blacklist:</label>
+              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="blacklistVal">
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Burn Modal -->
+  <div class="modal fade" id="burnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Burn tokens</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <label>Number of tokens to burn: </label>
+            <input type="number" id="burnVal">
+            <br>
+            <small>Only tokens from the Chairperson's account can be burned.</small>
+            <br>
+            <br>
+            <button class="btn btn-info btn-md" onclick="burn()">Update</button>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Supply Modal -->
+  <div class="modal fade" id="supplyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Increase supply of tokens</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <label>New Total Supply: </label>
+            <input type="number" id="supplyVal">
+            <br>
+            <br>
+            <button class="btn btn-info btn-md" onclick="updateSupply()">Update</button>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Change Cap Modal -->
+  <div class="modal fade" id="capModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update the cap on tokens per address</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <label>New Cap: </label>
+            <input type="number" id="capVal">
+            <br>
+            <br>
+            <button class="btn btn-info btn-md" onclick="updateCap()">Update</button>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Loading Modal -->
+  <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Processing transaction</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <div id="spinning-circle">
+              <img src="http://i.stack.imgur.com/WbNlQ.jpg">
+            </div>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 
@@ -443,9 +595,10 @@ The above copyright notice and this permission notice shall be included in all c
     var userTokens;
     var contractNames = [];
 
+
     function loadManage() {
-      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector"> <div class="col-md-4 ml-auto mr-auto"> <div class="form-group"> <label for="exampleFormControlSelect2">Select contract to interact with</label> <select multiple class="form-control" id="myTokens" onchange=""> </select><br><br> <center> <button class="btn btn-info btn-sm"> Load </button> </center>  </div> </div> </div>';
-      getUserTokens();
+      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
+      //getUserTokens();
     }
 
 
@@ -486,6 +639,909 @@ The above copyright notice and this permission notice shall be included in all c
         }
       }
     }
+
+    // PLANE -------------------
+
+    var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
+
+    function openFoundationOptions() {
+      $('#foundationModal').modal('toggle');
+    }
+
+    function loadSelectedContract() {
+      if (document.getElementsById('contractInput') == "") {
+        contractAddress = document.getElementsById('selector').value;
+        Token = TokenContract.at(contractAddress);
+      }
+      else {
+        contractAddress = document.getElementsById('contractInput').value;
+        Token = TokenContract.at(contractAddress);
+      }
+    }
+
+    var contractAddress;
+    var TokenContract = web3.eth.contract([
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "whitelistActive",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "name",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "approve",
+        "outputs": [
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "nextInLine",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferFrom",
+        "outputs": [
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "chairperson",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "decimals",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "cap",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          }
+        ],
+        "name": "isWhitelisted",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "toAdd",
+            "type": "address"
+          }
+        ],
+        "name": "addToBlackList",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "numberOfTokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "burn",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          }
+        ],
+        "name": "voteToAdd",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newSupply",
+            "type": "uint256"
+          }
+        ],
+        "name": "updateSupply",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "tokenOwner",
+            "type": "address"
+          }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+          {
+            "name": "balance",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_newStatus",
+            "type": "bool"
+          }
+        ],
+        "name": "changeWhiteListStatus",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          }
+        ],
+        "name": "voteToRemove",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "acceptOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          }
+        ],
+        "name": "selectNextInLine",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "ad",
+            "type": "address"
+          }
+        ],
+        "name": "getConversionFee",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "toRemove",
+            "type": "address"
+          }
+        ],
+        "name": "removeFromWhitelist",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "symbol",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "votesToRemove",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "numberOfVoters",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "addressesVotedOn",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "name": "tokens",
+            "type": "uint256"
+          },
+          {
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "name": "approveAndCall",
+        "outputs": [
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "newOwner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          {
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "transferAnyERC20Token",
+        "outputs": [
+          {
+            "name": "success",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "tokenOwner",
+            "type": "address"
+          },
+          {
+            "name": "spender",
+            "type": "address"
+          }
+        ],
+        "name": "allowance",
+        "outputs": [
+          {
+            "name": "remaining",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "votesToAdd",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "toAdd",
+            "type": "address"
+          }
+        ],
+        "name": "addToWhitelist",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          },
+          {
+            "name": "_choice",
+            "type": "uint8"
+          }
+        ],
+        "name": "removeMyVote",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_ad",
+            "type": "address"
+          }
+        ],
+        "name": "getOwners",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "name": "_symbol",
+            "type": "string"
+          },
+          {
+            "name": "_decimals",
+            "type": "uint8"
+          },
+          {
+            "name": "_foundation",
+            "type": "address[4]"
+          },
+          {
+            "name": "_cap",
+            "type": "uint256"
+          },
+          {
+            "name": "_supply",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTxs",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTime",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxAddresses",
+            "type": "uint256"
+          },
+          {
+            "name": "_safety",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "fallback"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "_from",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "_to",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "Transfer",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "tokenOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "name": "spender",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "tokens",
+            "type": "uint256"
+          }
+        ],
+        "name": "Approval",
+        "type": "event"
+      }
+    ]
+    );
+    var Token;
+
+    function builtTokenDashboard() {
+      document.getElementById('mainBody').innerHTML = '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
+      Token.balances(web3.eth.accounts[0], (error, result) => {
+        document.getElementById('userBalance').innerHTML = result;
+      });
+      Token.name((error, result) => {
+        document.getElementById('tokenName').innerHTML = result;
+      });
+      Token.symbol((error, result) => {
+        document.getElementById('tokenSymbol').innerHTML = result;
+      });
+      Token.totalSupply((error, result) => {
+        document.getElementById('tokenSupply').innerHTML = result;
+      });
+      Token.decimals((error, result) => {
+        document.getElementById('tokenDecimals').innerHTML = result;
+      });
+      Token.cap((error, result) => {
+        document.getElementById('tokenCap').innerHTML = result;
+      });
+      Token.chairperson((error, result) => {
+        document.getElementById('tokenChairperson').innerHTML = result;
+      });
+      Token.maxTransactions((error, result) => {
+        document.getElementById('tokenTransactions').innerHTML = result;
+      });
+      Token.maxAddresses((error, result) => {
+        document.getElementById('tokenAddresses').innerHTML = result;
+      });
+      Token.maxTime((error, result) => {
+        document.getElementById('tokenTime').innerHTML = result;
+      });
+    }
+
+    function openBurn() {
+      $('#burnModal').modal('toggle');
+    }
+
+
+    function openUpdateSupply() {
+      $('#supplyModal').modal('toggle');
+    }
+
+
+    function openUpdateCap() {
+      $('#capModal').modal('toggle');
+    }
+
+    function burn() {
+      var tx = Token.burn(document.getElementById('burnVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    };
+
+
+    function updateCap() {
+      var tx = Token.updateCap(document.getElementById('capVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
+    function updateSupply() {
+      var tx = Token.updateSupply(document.getElementById('supplyVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
+    function voteToAdd() {
+      var tx = Token.voteToAdd(document.getElementById('addVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
+    function voteToRemove() {
+      var tx = Token.updateSupply(document.getElementById('removeVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
+    function addToWhitelist() {
+      var tx = Token.addToWhitelist(document.getElementById('whitelistVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+    
+
+    function addToBlackList() {
+      var tx = Token.addToWhitelist(document.getElementById('blacklistVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
+    function changeWhiteListStatus() {
+      var tx = Token.changeWhiteListStatus(document.getElementById('whitelistStatusVal').value, {
+        from: account,
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    }
+
 
   </script>
 
