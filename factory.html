@@ -1379,6 +1379,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadSelectedContract() {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
+      setTimeout(function() {
       if (document.getElementById('contractInput') == "") {
         contractAddress = document.getElementById('selector').value;
         Token = TokenContract.at(contractAddress);
@@ -1389,6 +1390,7 @@ The above copyright notice and this permission notice shall be included in all c
         Token = TokenContract.at(contractAddress);
         buildTokenDashboard();
       }
+    },2000);
     }
 
 
