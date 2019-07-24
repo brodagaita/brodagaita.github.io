@@ -158,9 +158,6 @@ The above copyright notice and this permission notice shall be included in all c
             <button class="btn btn-danger" style="margin-right: 2%;" onclick="loadCreate()">Create new token</button>
             <button class="btn btn-danger" onclick="loadManage()">Manage your tokens</button>
             <br>
-            <br>
-            <br>
-            <br>
           </div>
         </div>
 
@@ -1383,16 +1380,17 @@ The above copyright notice and this permission notice shall be included in all c
       if (document.getElementById('contractInput') == "") {
         contractAddress = document.getElementById('myTokens').value;
         Token = TokenContract.at(contractAddress);
-        document.getElementById('selectionSpace').innerHTML = "";
         buildTokenDashboard();
       }
       else {
         contractAddress = document.getElementById('contractInput').value;
         Token = TokenContract.at(contractAddress);
-        document.getElementById('selectionSpace').innerHTML = "";
         buildTokenDashboard();
       }
     },500);
+    setTimeout(function() {
+      document.getElementById('selectionSpace').innerHTML = "";
+    },700)
     }
 
 
