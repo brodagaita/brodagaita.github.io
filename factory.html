@@ -1381,7 +1381,7 @@ The above copyright notice and this permission notice shall be included in all c
       document.getElementById('dashboard').innerHTML = tokenDashboard;
       setTimeout(function() {
       if (document.getElementById('contractInput') == "") {
-        contractAddress = document.getElementById('selector').value;
+        contractAddress = document.getElementById('myTokens').value;
         Token = TokenContract.at(contractAddress);
         document.getElementById('selectionSpace').innerHTML = "";
         buildTokenDashboard();
