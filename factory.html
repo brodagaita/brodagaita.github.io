@@ -125,7 +125,7 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
   <div class="main">
     <div class="section text-center">
-      <div class="container">
+      <div class="container" id="dashboard">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto">
           </div>
@@ -352,313 +352,7 @@ The above copyright notice and this permission notice shall be included in all c
     var middle = ' (ETH Address)</label><input type="text" class="form-control" id="'
     var end = '" aria-describedby="emailHelp" placeholder="0x">   </div>'
 
-    var getEvents = true;
-
-    function loadFields() {
-      console.log('here')
-      var n = document.getElementById("nMembers").value;
-      document.getElementById('foundation').innerHTML = '';
-      for (var i = 0; i < document.getElementById("nMembers").value; i++) {
-        if (i == 0) {
-          document.getElementById('foundation').innerHTML += beginning + "Chairperson" + middle + String('fnd' + (i + 1)) + end;
-        }
-        else if (i == 1) {
-          document.getElementById('foundation').innerHTML += beginning + "Next in Line " + middle + String('fnd' + (i + 1)) + end;
-        }
-        else {
-          document.getElementById('foundation').innerHTML += beginning + "Foundation Member " + (i + 1) + middle + String('fnd' + (i + 1)) + end;
-        }
-      }
-    }
-
-    var create = ' <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <h5> Make sure you have MetaMask downloaded and unlocked </h5> <p> <b>Your address: </b><span>No address detected - Please refresh page</span> </p> <br> <br> <form> <div class="form-group"> <label for="exampleInputEmail1">Token Name</label> <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputPassword1">Token Symbol</label> <input type="text" class="form-control" id="symbol" placeholder="Example: SYMB"> <small id="emailHelp" class="form-text text-muted"> It is suggested to keep the symbol between 3-4 characters. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Decimals</label> <input type="number" class="form-control" id="decimals" placeholder="0" max="18"> <small id="emailHelp" class="form-text text-muted">Up to how many decimals a unit of your token will be divisible to. Example: traditional currencies are divisible up to two decimals (The lowest denomination of a dollar is 1/100 of a dollar, called a cent). <b>Suggested Value: 0</b>. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Cap on ownership</label> <input type="text" class="form-control" id="cap" aria-describedby="emailHelp" placeholder="Example: 5000"> <small id="emailHelp" class="form-text text-muted">Maximum amount of tokens a standard user can have at a given time. Leave this blank if you do not wish to have a cap.</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Initial/Total Supply</label> <input type="number" class="form-control" id="supply" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Number of tokens available from creation (Should correspond to the amount of collateral in a real-world system). This number can be changed later.</small> </div> <br> <h5> The following fields refer to the Tiers of Conversion model. If you are not familiar with the model, please refer to Section 4.5 of this paper. You can also leave the fields blank to use our default values. </h5> <br> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of transactions</label> <input type="number" class="form-control" id="maxTxs" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for time since joining the platform</label> <input type="number" class="form-control" id="maxTime" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Values are in months</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of distinct addresses transacted with</label> <input type="number" class="form-control" id="maxAddresses" aria-describedby="emailHelp" placeholder=""> </div> <br> <h5> Establishing the Foundation </h5> <br> <div class="form-group"> <label for="exampleFormControlSelect2">Number of founding members in Foundation</label> <select multiple class="form-control" id="nMembers" onchange="loadFields()"> <option>1</option> <option>2</option> <option>3</option> <option>4</option> </select> <small id="emailHelp" class="form-text text-muted">More can be added later</small> </div> <div id="foundation"> </div> <div class="form-check"> <label class="form-check-label"> <input class="form-check-input" type="checkbox" id="safety" value=""> Is the Chairperson the creator of the contract? <span class="form-check-sign"> <span class="check"></span> </span> </label> </div> <br><center> <button onclick="setParameters()" class="btn btn-primary" type="button">Create Token</button> </center> </form> </div></div>'
-
-    function loadCreate() {
-      document.getElementById('selectionSpace').innerHTML = create;
-    }
-
-
-
-    // web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
-    // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-
-    window.addEventListener('load', async () => {
-      if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
-        try {
-          await ethereum.enable();
-          web3.eth.sendTransaction({});
-        } catch (error) {
-          //web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-          // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
-          // window.web3 = new Web3(ethereum);
-          web3 = new Web3(web3.currentProvider);
-        }
-      }
-      else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
-        web3.eth.sendTransaction({/*...*/ });
-      }
-      else {
-        // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-      }
-    });
-
-    var FactoryContract = web3.eth.contract([
-      {
-        "constant": false,
-        "inputs": [
-          {
-            "name": "_name",
-            "type": "string"
-          },
-          {
-            "name": "_symbol",
-            "type": "string"
-          },
-          {
-            "name": "_decimals",
-            "type": "uint8"
-          },
-          {
-            "name": "_foundation",
-            "type": "address[4]"
-          },
-          {
-            "name": "_cap",
-            "type": "uint256"
-          },
-          {
-            "name": "_supply",
-            "type": "uint256"
-          },
-          {
-            "name": "_maxTxs",
-            "type": "uint256"
-          },
-          {
-            "name": "_maxTime",
-            "type": "uint256"
-          },
-          {
-            "name": "_maxAddresses",
-            "type": "uint256"
-          },
-          {
-            "name": "_safety",
-            "type": "bool"
-          }
-        ],
-        "name": "createNewToken",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "name": "_creator",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "name": "_token",
-            "type": "address"
-          }
-        ],
-        "name": "NewTokenCreated",
-        "type": "event"
-      },
-      {
-        "constant": true,
-        "inputs": [
-          {
-            "name": "_contract",
-            "type": "address"
-          }
-        ],
-        "name": "getContractName",
-        "outputs": [
-          {
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "constant": true,
-        "inputs": [
-          {
-            "name": "_user",
-            "type": "address"
-          }
-        ],
-        "name": "getUserTokens",
-        "outputs": [
-          {
-            "name": "",
-            "type": "address[]"
-          }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-      }
-    ]
-    );
-    var factoryAddress = "0xdba32c80a633634718a559077d5ca9f52875ba7b";
-    var Factory = FactoryContract.at(factoryAddress);
-
-    function pullHeadline() {
-      ThreeBox.getHeadline((error, data) => {
-        document.getElementById('headline').innerHTML = data;
-        document.getElementById('contract').innerHTML = "Contract address: <a href='https://etherscan.io/address/0x8155b453fa5c6ea9a8083b42edec82951846f7d3' target='_blank'>0x8155b453fa5c6ea9a8083b42edec82951846f7d3</a>."
-      });
-    }
-
-
-
-
-    var nm, sym, dec, cp, sup, txs, tme, adr, saf;
-    var fnd = [];
-
-    function setParameters() {
-      nm = document.getElementById('name').value;
-      sym = document.getElementById('symbol').value;
-      dec = document.getElementById('decimals').value;
-      cp = document.getElementById('cap').value;
-      sup = document.getElementById('supply').value;
-      txs = document.getElementById('maxTxs').value;
-      tme = document.getElementById('maxTime').value;
-      adr = document.getElementById('maxAddresses').value;
-      saf = !(document.getElementById('safety').checked);
-      for (var i = 0; i < 4; i++) {
-        if (document.getElementById(String('fnd' + (i + 1))) == null) {
-          fnd.push('0x0000000000000000000000000000000000000000');
-        }
-        else {
-          fnd.push(document.getElementById(String('fnd' + (i + 1))).value);
-        }
-      }
-      createToken(nm, sym, dec, cp, sup, txs, tme, adr);
-    }
-
-
-
-    function createToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses) {
-      var found = fnd;
-      // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
-      var tx = Factory.createNewToken(name, symbol, decimals, found, cap, supply, maxTxs, maxTime, maxAddresses, false, {
-        from: web3.eth.accounts[0],
-        // gas: "3000000",
-        to: factoryAddress,
-        // value: checkPrice(0),
-        data: ""
-      }, function (err, transactionHash) {
-        if (!err) {
-          $('#exampleModal').modal('toggle');
-          console.log(transactionHash);
-          fnd.length = 0;
-        }
-        else {
-          console.log(err);
-        }
-      }
-      )
-    };
-
-
-    Factory.allEvents({
-      fromBlock: web3.eth.defaultBlock
-    }, (error, event) => {
-      if (event.args._creator == web3.eth.accounts[0]) {
-        console.log(event.args);
-        document.getElementById('modBod').innerHTML = "<p> Success! Contract " + event.args._token + " created. </p>";
-        document.getElementById('modFoot').innerHTML = ' <div class="left-side"> <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button> </div> <div class="divider"></div> <div class="right-side"> <button type="button" class="btn btn-danger btn-link">Use token</button> </div>';
-      } else { }
-    });
-
-    /*
-    setTimeout(function() {
-      createToken("test", "TST", 0, ["0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F"], 1000, 10000, 100, 21, 100, false);
-    },1000)
-    */
-
-    var userTokens;
-    var contractNames = [];
-
-
-    function loadManage() {
-      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
-      getUserTokens();
-    }
-
-
-    function getUserTokens() {
-      Factory.getUserTokens(web3.eth.accounts[0], (err, arr) => {
-            if (!err) {
-              userTokens = arr;
-              getContractNames(arr, 0, arr.length);
-            }
-        });
-    }
-
-    function getContractNames(arr, i, l) {
-      if (i != l) {
-        Factory.getContractName(arr[i], (err, name) => {
-            contractNames.push(name);
-            getContractNames(arr, i+1, l);
-        });
-      }
-      else {
-        console.log("tokens: " + userTokens);
-        console.log("names: " + contractNames);
-        setSelector(l);
-      }
-    }
-
-    function setSelector(length) {
-      for (var i = 0; i <= length; i++) {
-        if (i != length) {
-          var opt = document.createElement("option");
-          opt.innerHTML = contractNames[i] + ' (' + userTokens[i] + ')';
-          opt.value = userTokens[i];
-          document.getElementById('myTokens').appendChild(opt);
-        }
-        else {
-          contractNames = [];
-          userTokens = [];
-        }
-      }
-    }
-
-    // PLANE -------------------
-
-    var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
-
-    function openFoundationOptions() {
-      $('#foundationModal').modal('toggle');
-    }
-
-    function loadSelectedContract() {
-      if (document.getElementById('contractInput') == "") {
-        contractAddress = document.getElementById('selector').value;
-        Token = TokenContract.at(contractAddress);
-      }
-      else {
-        contractAddress = document.getElementById('contractInput').value;
-        Token = TokenContract.at(contractAddress);
-      }
-    }
-
+ var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
     var contractAddress;
     var TokenContract = web3.eth.contract([
       {
@@ -1363,8 +1057,319 @@ The above copyright notice and this permission notice shall be included in all c
     ]
     );
     var Token;
+    
 
-    function builtTokenDashboard() {
+    var getEvents = true;
+
+    function loadFields() {
+      console.log('here')
+      var n = document.getElementById("nMembers").value;
+      document.getElementById('foundation').innerHTML = '';
+      for (var i = 0; i < document.getElementById("nMembers").value; i++) {
+        if (i == 0) {
+          document.getElementById('foundation').innerHTML += beginning + "Chairperson" + middle + String('fnd' + (i + 1)) + end;
+        }
+        else if (i == 1) {
+          document.getElementById('foundation').innerHTML += beginning + "Next in Line " + middle + String('fnd' + (i + 1)) + end;
+        }
+        else {
+          document.getElementById('foundation').innerHTML += beginning + "Foundation Member " + (i + 1) + middle + String('fnd' + (i + 1)) + end;
+        }
+      }
+    }
+
+    var create = ' <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <h5> Make sure you have MetaMask downloaded and unlocked </h5> <p> <b>Your address: </b><span>No address detected - Please refresh page</span> </p> <br> <br> <form> <div class="form-group"> <label for="exampleInputEmail1">Token Name</label> <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputPassword1">Token Symbol</label> <input type="text" class="form-control" id="symbol" placeholder="Example: SYMB"> <small id="emailHelp" class="form-text text-muted"> It is suggested to keep the symbol between 3-4 characters. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Decimals</label> <input type="number" class="form-control" id="decimals" placeholder="0" max="18"> <small id="emailHelp" class="form-text text-muted">Up to how many decimals a unit of your token will be divisible to. Example: traditional currencies are divisible up to two decimals (The lowest denomination of a dollar is 1/100 of a dollar, called a cent). <b>Suggested Value: 0</b>. </small> </div> <div class="form-group"> <label for="exampleInputEmail1">Cap on ownership</label> <input type="text" class="form-control" id="cap" aria-describedby="emailHelp" placeholder="Example: 5000"> <small id="emailHelp" class="form-text text-muted">Maximum amount of tokens a standard user can have at a given time. Leave this blank if you do not wish to have a cap.</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Initial/Total Supply</label> <input type="number" class="form-control" id="supply" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Number of tokens available from creation (Should correspond to the amount of collateral in a real-world system). This number can be changed later.</small> </div> <br> <h5> The following fields refer to the Tiers of Conversion model. If you are not familiar with the model, please refer to Section 4.5 of this paper. You can also leave the fields blank to use our default values. </h5> <br> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of transactions</label> <input type="number" class="form-control" id="maxTxs" aria-describedby="emailHelp" placeholder=""> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for time since joining the platform</label> <input type="number" class="form-control" id="maxTime" aria-describedby="emailHelp" placeholder=""> <small id="emailHelp" class="form-text text-muted">Values are in months</small> </div> <div class="form-group"> <label for="exampleInputEmail1">Upper boundary for number of distinct addresses transacted with</label> <input type="number" class="form-control" id="maxAddresses" aria-describedby="emailHelp" placeholder=""> </div> <br> <h5> Establishing the Foundation </h5> <br> <div class="form-group"> <label for="exampleFormControlSelect2">Number of founding members in Foundation</label> <select multiple class="form-control" id="nMembers" onchange="loadFields()"> <option>1</option> <option>2</option> <option>3</option> <option>4</option> </select> <small id="emailHelp" class="form-text text-muted">More can be added later</small> </div> <div id="foundation"> </div> <div class="form-check"> <label class="form-check-label"> <input class="form-check-input" type="checkbox" id="safety" value=""> Is the Chairperson the creator of the contract? <span class="form-check-sign"> <span class="check"></span> </span> </label> </div> <br><center> <button onclick="setParameters()" class="btn btn-primary" type="button">Create Token</button> </center> </form> </div></div>'
+
+    function loadCreate() {
+      document.getElementById('selectionSpace').innerHTML = create;
+    }
+
+
+
+    // web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+    // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          web3.eth.sendTransaction({});
+        } catch (error) {
+          //web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+          // web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+          // window.web3 = new Web3(ethereum);
+          web3 = new Web3(web3.currentProvider);
+        }
+      }
+      else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        web3.eth.sendTransaction({/*...*/ });
+      }
+      else {
+        // web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+      }
+    });
+
+    var FactoryContract = web3.eth.contract([
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "name": "_symbol",
+            "type": "string"
+          },
+          {
+            "name": "_decimals",
+            "type": "uint8"
+          },
+          {
+            "name": "_foundation",
+            "type": "address[4]"
+          },
+          {
+            "name": "_cap",
+            "type": "uint256"
+          },
+          {
+            "name": "_supply",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTxs",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxTime",
+            "type": "uint256"
+          },
+          {
+            "name": "_maxAddresses",
+            "type": "uint256"
+          },
+          {
+            "name": "_safety",
+            "type": "bool"
+          }
+        ],
+        "name": "createNewToken",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "name": "_creator",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "NewTokenCreated",
+        "type": "event"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_contract",
+            "type": "address"
+          }
+        ],
+        "name": "getContractName",
+        "outputs": [
+          {
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_user",
+            "type": "address"
+          }
+        ],
+        "name": "getUserTokens",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+    );
+    var factoryAddress = "0xdba32c80a633634718a559077d5ca9f52875ba7b";
+    var Factory = FactoryContract.at(factoryAddress);
+
+    function pullHeadline() {
+      ThreeBox.getHeadline((error, data) => {
+        document.getElementById('headline').innerHTML = data;
+        document.getElementById('contract').innerHTML = "Contract address: <a href='https://etherscan.io/address/0x8155b453fa5c6ea9a8083b42edec82951846f7d3' target='_blank'>0x8155b453fa5c6ea9a8083b42edec82951846f7d3</a>."
+      });
+    }
+
+
+
+
+    var nm, sym, dec, cp, sup, txs, tme, adr, saf;
+    var fnd = [];
+
+    function setParameters() {
+      nm = document.getElementById('name').value;
+      sym = document.getElementById('symbol').value;
+      dec = document.getElementById('decimals').value;
+      cp = document.getElementById('cap').value;
+      sup = document.getElementById('supply').value;
+      txs = document.getElementById('maxTxs').value;
+      tme = document.getElementById('maxTime').value;
+      adr = document.getElementById('maxAddresses').value;
+      saf = !(document.getElementById('safety').checked);
+      for (var i = 0; i < 4; i++) {
+        if (document.getElementById(String('fnd' + (i + 1))) == null) {
+          fnd.push('0x0000000000000000000000000000000000000000');
+        }
+        else {
+          fnd.push(document.getElementById(String('fnd' + (i + 1))).value);
+        }
+      }
+      createToken(nm, sym, dec, cp, sup, txs, tme, adr);
+    }
+
+
+
+    function createToken(name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses) {
+      var found = fnd;
+      // console.log(fnd, name, symbol, decimals, cap, supply, maxTxs, maxTime, maxAddresses, safety);
+      var tx = Factory.createNewToken(name, symbol, decimals, found, cap, supply, maxTxs, maxTime, maxAddresses, false, {
+        from: web3.eth.accounts[0],
+        // gas: "3000000",
+        to: factoryAddress,
+        // value: checkPrice(0),
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#exampleModal').modal('toggle');
+          console.log(transactionHash);
+          fnd.length = 0;
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    };
+
+
+    Factory.allEvents({
+      fromBlock: web3.eth.defaultBlock
+    }, (error, event) => {
+      if (event.args._creator == web3.eth.accounts[0]) {
+        console.log(event.args);
+        document.getElementById('modBod').innerHTML = "<p> Success! Contract " + event.args._token + " created. </p>";
+        document.getElementById('modFoot').innerHTML = ' <div class="left-side"> <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button> </div> <div class="divider"></div> <div class="right-side"> <button type="button" class="btn btn-danger btn-link">Use token</button> </div>';
+      } else { }
+    });
+
+    /*
+    setTimeout(function() {
+      createToken("test", "TST", 0, ["0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F", "0x5c7AD20DC173dFa74C18E892634E1CA27E8E472F"], 1000, 10000, 100, 21, 100, false);
+    },1000)
+    */
+
+    var userTokens;
+    var contractNames = [];
+
+
+    function loadManage() {
+      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
+      getUserTokens();
+    }
+
+
+    function getUserTokens() {
+      Factory.getUserTokens(web3.eth.accounts[0], (err, arr) => {
+            if (!err) {
+              userTokens = arr;
+              getContractNames(arr, 0, arr.length);
+            }
+        });
+    }
+
+    function getContractNames(arr, i, l) {
+      if (i != l) {
+        Factory.getContractName(arr[i], (err, name) => {
+            contractNames.push(name);
+            getContractNames(arr, i+1, l);
+        });
+      }
+      else {
+        console.log("tokens: " + userTokens);
+        console.log("names: " + contractNames);
+        setSelector(l);
+      }
+    }
+
+    function setSelector(length) {
+      for (var i = 0; i <= length; i++) {
+        if (i != length) {
+          var opt = document.createElement("option");
+          opt.innerHTML = contractNames[i] + ' (' + userTokens[i] + ')';
+          opt.value = userTokens[i];
+          document.getElementById('myTokens').appendChild(opt);
+        }
+        else {
+          contractNames = [];
+          userTokens = [];
+        }
+      }
+    }
+
+    // PLANE -------------------
+
+   
+    function openFoundationOptions() {
+      $('#foundationModal').modal('toggle');
+    }
+
+    function loadSelectedContract() {
+      if (document.getElementById('contractInput') == "") {
+        contractAddress = document.getElementById('selector').value;
+        Token = TokenContract.at(contractAddress);
+      }
+      else {
+        contractAddress = document.getElementById('contractInput').value;
+        Token = TokenContract.at(contractAddress);
+      }
+      buildTokenDashboard();
+      document.getElementById('dashboard').innerHTML = tokenDashboard;
+    }
+
+
+
+    function buildTokenDashboard() {
       document.getElementById('mainBody').innerHTML = '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
       Token.balances(web3.eth.accounts[0], (error, result) => {
         document.getElementById('userBalance').innerHTML = result;
