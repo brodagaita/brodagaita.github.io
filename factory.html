@@ -598,7 +598,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadManage() {
       document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
-      //getUserTokens();
+      getUserTokens();
     }
 
 
