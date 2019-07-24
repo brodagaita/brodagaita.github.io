@@ -1399,7 +1399,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     function buildTokenDashboard() {
       document.getElementById('dashboard').innerHTML += '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
-      Token.balances(web3.eth.accounts[0], (error, result) => {
+      Token.balanceOf(web3.eth.accounts[0], (error, result) => {
         document.getElementById('userBalance').innerHTML = result;
       });
       Token.name((error, result) => {
