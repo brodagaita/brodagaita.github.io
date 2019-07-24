@@ -1379,6 +1379,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadSelectedContract() {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
+      document.getElementById('selectionSpace').innerHTML = "";
       setTimeout(function() {
       if (document.getElementById('contractInput') == "") {
         contractAddress = document.getElementById('selector').value;
@@ -1390,13 +1391,13 @@ The above copyright notice and this permission notice shall be included in all c
         Token = TokenContract.at(contractAddress);
         buildTokenDashboard();
       }
-    },2000);
+    },500);
     }
 
 
 
     function buildTokenDashboard() {
-      document.getElementById('mainBody').innerHTML = '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
+      document.getElementById('dashboard').innerHTML += '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
       Token.balances(web3.eth.accounts[0], (error, result) => {
         document.getElementById('userBalance').innerHTML = result;
       });
