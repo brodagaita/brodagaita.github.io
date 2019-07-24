@@ -650,11 +650,11 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadSelectedContract() {
       if (document.getElementById('contractInput') == "") {
-        contractAddress = document.getElementsById('selector').value;
+        contractAddress = document.getElementById('selector').value;
         Token = TokenContract.at(contractAddress);
       }
       else {
-        contractAddress = document.getElementsById('contractInput').value;
+        contractAddress = document.getElementById('contractInput').value;
         Token = TokenContract.at(contractAddress);
       }
     }
