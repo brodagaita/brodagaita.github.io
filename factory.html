@@ -155,6 +155,8 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="col-lg-12 ml-auto mr-auto">
             <h2 class="title"> Select one </h2>
             <br>
+            <h4> Factory is currently live on Ropsten test network only. </h2>
+            <br>
             <button class="btn btn-danger" style="margin-right: 2%;" onclick="loadCreate()">Create new token</button>
             <button class="btn btn-danger" onclick="loadManage()">Manage your tokens</button>
             <br>
@@ -1249,7 +1251,7 @@ The above copyright notice and this permission notice shall be included in all c
       }
     ]
     );
-    var factoryAddress = "0xdba32c80a633634718a559077d5ca9f52875ba7b";
+    var factoryAddress = "0xaac96f367e6e80e2613f45284e02ac6590113c5f";
     var Factory = FactoryContract.at(factoryAddress);
 
 
@@ -1402,7 +1404,6 @@ The above copyright notice and this permission notice shall be included in all c
       Token.balanceOf(web3.eth.accounts[0], (error, result) => {
         document.getElementById('userBalance').innerHTML = result;
       });
-      /*
       Token.name((error, result) => {
         document.getElementById('tokenName').innerHTML = result;
       });
@@ -1421,8 +1422,6 @@ The above copyright notice and this permission notice shall be included in all c
       Token.chairperson((error, result) => {
         document.getElementById('tokenChairperson').innerHTML = result;
       });
-      */
-      /*
       Token.maxTransactions((error, result) => {
         document.getElementById('tokenTransactions').innerHTML = result;
       });
@@ -1432,7 +1431,6 @@ The above copyright notice and this permission notice shall be included in all c
       Token.maxTime((error, result) => {
         document.getElementById('tokenTime').innerHTML = result;
       });
-      */
     }
 
     function openBurn() {
