@@ -1424,14 +1424,15 @@ The above copyright notice and this permission notice shall be included in all c
     function loadSelectedContract(adr) {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
       setTimeout(function () {
-        if (document.getElementById('contractInput').value == "") {
+        if (adr != false) {
+          Token = TokenContract.at(adr);
+          $('#exampleModal').modal('hide');
+          buildTokenDashboard();
+        }
+         else if (document.getElementById('contractInput').value == "") {
           contractAddress = document.getElementById('myTokens').value;
           console.log('if', contractAddress);
           Token = TokenContract.at(contractAddress);
-          buildTokenDashboard();
-        }
-        else if (adr != false) {
-          Token = TokenContract.at(adr);
           buildTokenDashboard();
         }
         else {
