@@ -285,6 +285,35 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
 
+
+    <!-- Transfer Modal -->
+    <div class="modal fade" id="txModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send tokens to another address</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <label>Number of tokens to send: </label>
+            <input type="number" id="tokenVal">
+            <br>
+            <label>Receiving address: </label>
+            <input type="number" id="receiverVal">
+            <br>
+            <br>
+            <button class="btn btn-info btn-md" onclick="send()">Send</button>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Update Supply Modal -->
   <div class="modal fade" id="supplyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -1487,6 +1516,10 @@ The above copyright notice and this permission notice shall be included in all c
       $('#burnModal').modal('toggle');
     }
 
+    function openTxModal() {
+      $('#txModal').modal('toggle');
+    }
+
 
     function openUpdateSupply() {
       $('#supplyModal').modal('toggle');
@@ -1503,6 +1536,22 @@ The above copyright notice and this permission notice shall be included in all c
 
     function burn() {
       var tx = Token.burn(document.getElementById('burnVal').value, {
+        from: web3.eth.accounts[0],
+        to: factoryAddress,
+        data: ""
+      }, function (err, transactionHash) {
+        if (!err) {
+          $('#loadingModal').modal('toggle');
+        }
+        else {
+          console.log(err);
+        }
+      }
+      )
+    };
+
+    function send() {
+      var tx = Token.transfer(document.getElementById('tokenVal').value, document.getElementById('receiverVal').value {
         from: web3.eth.accounts[0],
         to: factoryAddress,
         data: ""
