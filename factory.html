@@ -161,13 +161,13 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
 
-    </div>
-  </div>
-
-      <div id="selectionSpace">
-
       </div>
     </div>
+
+    <div id="selectionSpace">
+
+    </div>
+  </div>
   </div>
 
   <!-- Modal -->
@@ -189,68 +189,70 @@ The above copyright notice and this permission notice shall be included in all c
           </center>
         </div>
         <div class="modal-footer" id='modFoot'>
-         
-          </div>
+
+        </div>
 
 
       </div>
     </div>
   </div>
 
-    <!-- Foundation Options Modal -->
-    <div class="modal fade" id="foundationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="exampleModalLabel">Manage Foundation</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-            <center>
-              <h5>You are currently the Chairperson.</h5>
-              <p>Chairperson: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
-              <p>Next in Line: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
-            </center>
-
-            <br>
-            <br>
-            <div class="button-set" style="width: 100%">
-              <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info" onclick="voteToAdd()">Vote</button>
-              <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to add:</label>
-              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="addVal">
-              <br>
-            </div>
-            <br>
-            <div class="button-set" style="width: 100%">
-              <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info" onclick="voteToRemove()">Vote</button>
-              <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to remove:</label>
-              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="removeVal">
-              <br>
-            </div>
-            <br>
-            <div class="button-set" style="width: 100%">
-              <button style="max-width: 20%; float: right; margin-right: 1%;"
-                class="btn btn-sm btn-tiny btn-info" onclick="addToWhitelist()">Add</button>
-              <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Whitelist:</label>
-              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="whitelistVal">
-              <br>
-            </div>
-            <br>
-            <div class="button-set" style="width: 100%">
-              <button style="max-width: 20%; float: right; margin-right: 1%;"
-                class="btn btn-sm btn-tiny btn-info" onclick="addToBlacklist()">Add</button>
-              <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Blacklist:</label>
-              <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="blacklistVal">
-              <br>
-            </div>
-          </div>
-
+  <!-- Foundation Options Modal -->
+  <div class="modal fade" id="foundationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Manage Foundation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
         </div>
+        <div class="modal-body">
+          <center>
+            <h5>You are currently the Chairperson.</h5>
+            <p>Chairperson: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
+            <p>Next in Line: 0xdfd75ca106455338d368bfd84e2c4355bd7d2654</p>
+          </center>
+
+          <br>
+          <br>
+          <div class="button-set" style="width: 100%">
+            <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info"
+              onclick="voteToAdd()">Vote</button>
+            <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to add:</label>
+            <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="addVal">
+            <br>
+          </div>
+          <br>
+          <div class="button-set" style="width: 100%">
+            <button style="max-width: 20%; float: right;" class="btn btn-sm btn-tiny btn-info"
+              onclick="voteToRemove()">Vote</button>
+            <label style="max-width: 40%; float: left; margin-left: 10%;">Vote to remove:</label>
+            <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="removeVal">
+            <br>
+          </div>
+          <br>
+          <div class="button-set" style="width: 100%">
+            <button style="max-width: 20%; float: right; margin-right: 1%;" class="btn btn-sm btn-tiny btn-info"
+              onclick="addToWhitelist()">Add</button>
+            <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Whitelist:</label>
+            <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="whitelistVal">
+            <br>
+          </div>
+          <br>
+          <div class="button-set" style="width: 100%">
+            <button style="max-width: 20%; float: right; margin-right: 1%;" class="btn btn-sm btn-tiny btn-info"
+              onclick="addToBlacklist()">Add</button>
+            <label style="max-width: 40%; float: left; margin-left: 10%;">Add to Blacklist:</label>
+            <input style="max-width: 40%; float: right; margin-right: 2%;" type="text" id="blacklistVal">
+            <br>
+          </div>
+        </div>
+
       </div>
     </div>
+  </div>
 
   </div>
   </div>
@@ -372,9 +374,9 @@ The above copyright notice and this permission notice shall be included in all c
     var middle = ' (ETH Address)</label><input type="text" class="form-control" id="'
     var end = '" aria-describedby="emailHelp" placeholder="0x">   </div>'
 
- var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
-   // var contractAddress;
-  
+    var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
+    var contractAddress;
+
     var TokenContract = web3.eth.contract([
       {
         "constant": true,
@@ -1077,8 +1079,8 @@ The above copyright notice and this permission notice shall be included in all c
       }
     ]
     );
-    // var Token;
-  
+    var Token;
+
 
     var getEvents = true;
 
@@ -1103,11 +1105,11 @@ The above copyright notice and this permission notice shall be included in all c
 
     function loadCreate() {
       document.getElementById('selectionSpace').innerHTML = create;
-      setTimeout(function() {
+      setTimeout(function () {
         if (web3.eth.accounts[0] != "") {
           document.getElementById('address').innerHTML = web3.eth.accounts[0];
         }
-      },500)
+      }, 500)
     }
 
 
@@ -1321,25 +1323,25 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     function loadManage() {
-      document.getElementById('selectionSpace').innerHTML =  '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
+      document.getElementById('selectionSpace').innerHTML = '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
       getUserTokens();
     }
 
 
     function getUserTokens() {
       Factory.getUserTokens(web3.eth.accounts[0], (err, arr) => {
-            if (!err) {
-              userTokens = arr;
-              getContractNames(arr, 0, arr.length);
-            }
-        });
+        if (!err) {
+          userTokens = arr;
+          getContractNames(arr, 0, arr.length);
+        }
+      });
     }
 
     function getContractNames(arr, i, l) {
       if (i != l) {
         Factory.getContractName(arr[i], (err, name) => {
-            contractNames.push(name);
-            getContractNames(arr, i+1, l);
+          contractNames.push(name);
+          getContractNames(arr, i + 1, l);
         });
       }
       else {
@@ -1366,35 +1368,35 @@ The above copyright notice and this permission notice shall be included in all c
 
     // PLANE -------------------
 
-   
+
     function openFoundationOptions() {
       $('#foundationModal').modal('toggle');
     }
 
     function loadSelectedContract() {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
-      setTimeout(function() {
-      if (document.getElementById('contractInput').value == "") {
-        var contractAddress = document.getElementById('myTokens').value;
-        console.log('if' , contractAddress);
-        var Token = TokenContract.at(contractAddress);
-        buildTokenDashboard();
-      }
-      else {
-        var contractAddress = document.getElementById('contractInput').value;
-        var Token = TokenContract.at(contractAddress);
-        console.log('else' , contractAddress);
-        buildTokenDashboard(Token);
-      }
-    },500);
-    setTimeout(function() {
-      document.getElementById('selectionSpace').innerHTML = "";
-    },700)
+      setTimeout(function () {
+        if (document.getElementById('contractInput').value == "") {
+          contractAddress = document.getElementById('myTokens').value;
+          console.log('if', contractAddress);
+          Token = TokenContract.at(contractAddress);
+          buildTokenDashboard();
+        }
+        else {
+          contractAddress = document.getElementById('contractInput').value;
+          Token = TokenContract.at(contractAddress);
+          console.log('else', contractAddress);
+          buildTokenDashboard(Token);
+        }
+      }, 500);
+      setTimeout(function () {
+        document.getElementById('selectionSpace').innerHTML = "";
+      }, 700)
     }
 
 
 
-    function buildTokenDashboard(Token) {
+    function buildTokenDashboard() {
       console.log(Token);
       document.getElementById('dashboard').innerHTML += '<script>' + 'Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})' + '<\/script>';
       Token.balanceOf(web3.eth.accounts[0], (error, result) => {
@@ -1543,7 +1545,7 @@ The above copyright notice and this permission notice shall be included in all c
       }
       )
     }
-    
+
 
     function addToBlackList() {
       var tx = Token.addToWhitelist(document.getElementById('blacklistVal').value, {
