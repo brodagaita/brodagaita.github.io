@@ -1374,7 +1374,7 @@ The above copyright notice and this permission notice shall be included in all c
     function loadSelectedContract() {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
       setTimeout(function() {
-      if (document.getElementById('contractInput') == "") {
+      if (document.getElementById('contractInput').value == "") {
         var contractAddress = document.getElementById('myTokens').value;
         console.log('if' , contractAddress);
         var Token = TokenContract.at(contractAddress);
