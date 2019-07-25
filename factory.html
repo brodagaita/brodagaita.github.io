@@ -1103,8 +1103,8 @@ The above copyright notice and this permission notice shall be included in all c
     function loadCreate() {
       document.getElementById('selectionSpace').innerHTML = create;
       setTimeout(function() {
-        if (web3.eth.address[0] != "") {
-          document.getElementById('address').innerHTML = web3.eth.address[0];
+        if (web3.eth.accounts[0] != "") {
+          document.getElementById('address').innerHTML = web3.eth.accounts[0];
         }
       },500)
     }
