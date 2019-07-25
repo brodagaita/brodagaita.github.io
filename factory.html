@@ -375,7 +375,7 @@ The above copyright notice and this permission notice shall be included in all c
     var middle = ' (ETH Address)</label><input type="text" class="form-control" id="'
     var end = '" aria-describedby="emailHelp" placeholder="0x">   </div>'
 
-    var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <p id="tokenChairperson"></p> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Tx number</h4> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Distinct addresses</h4> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Upper boundary: Time</h4> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
+    var tokenDashboard = ' <center> <div class="alert alert-info alert-wrapper" style="max-width: 50%; padding-bottom: 2%;"> <h3>Your balance: <span id="userBalance"></span></h3> <br> <button class="btn btn-info btn-sm" style="margin-right: 2%;" onclick="openTxModal()">Send Tokens</button> <br> </div> <br> </center> <h3><b>Manage Token Properties</b></h3> <br> <br> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Name</h4> <br> <h3 id="tokenName"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Symbol</h4> <br> <h3 id="tokenSymbol"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Total Supply</h4> <h3 id="tokenSupply"></h3> <br> <p> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openBurn()">Decrease</button> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openIncreaseSupply()">Increase</button> </center> </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Decimals</h4> <br> <h3 id="tokenDecimals"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Cap</h4> <h3 id="tokenCap"></h3> <br> <br> <center> <button href="#" style="border: 0px; background-color: transparent; color: black" class="card-link" onclick="openUpdateCap()">Change</button> </center> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h4 class="card-title">Chairperson</h4> <br> <br> <small id="tokenChairperson"></small> <center> <p style="visibility: hidden;"> . </p> </center> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <div class="row"> <div class="col-lg-12 ml-auto mr-auto card-row" style="max-width: 100%;"> <center> <div style="float:left; width:20%; visibility: hidden;"> . </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h5 class="card-title">Upper boundary: Tx number</h5> <br> <h3 id="tokenTransactions"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h5 class="card-title">Upper boundary: Distinct addresses</h5> <br> <h3 id="tokenAddresses"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%;" class="card-size"> <div class="card"> <div class="card-body"> <h5 class="card-title">Upper boundary: Time</h5> <br> <h3 id="tokenTime"></h3> <p style="visibility: hidden;"> . </p> </div> </div> </div> <div style="float:left; width:20%; visibility: hidden;"> . </div> </center> </div> </div> <button class="btn btn-sm" style="border: 0px; background-color: transparent; color: black; font-size: 100%;" onclick="openFoundationOptions()">Open Foundation Options</button>';
     var contractAddress;
 
     var TokenContract = web3.eth.contract([
@@ -1557,6 +1557,7 @@ The above copyright notice and this permission notice shall be included in all c
       }, function (err, transactionHash) {
         if (!err) {
           $('#loadingModal').modal('toggle');
+          $('#addModal').modal('hide');
         }
         else {
           console.log(err);
@@ -1573,6 +1574,7 @@ The above copyright notice and this permission notice shall be included in all c
       }, function (err, transactionHash) {
         if (!err) {
           $('#loadingModal').modal('toggle');
+          $('#removeModal').modal('hide');
         }
         else {
           console.log(err);
@@ -1589,6 +1591,7 @@ The above copyright notice and this permission notice shall be included in all c
       }, function (err, transactionHash) {
         if (!err) {
           $('#loadingModal').modal('toggle');
+          $('#whitelistModal').modal('hide');
         }
         else {
           console.log(err);
@@ -1606,6 +1609,7 @@ The above copyright notice and this permission notice shall be included in all c
       }, function (err, transactionHash) {
         if (!err) {
           $('#loadingModal').modal('toggle');
+          $('#blacklistModal').modal('hide');
         }
         else {
           console.log(err);
@@ -1629,6 +1633,8 @@ The above copyright notice and this permission notice shall be included in all c
       }
       )
     }
+
+    Token.allEvents({fromBlock: web3.eth.defaultBlock}, (error, event) => {$("#loadingModal").modal("hide"); alert("Update successful.")})
 
 
   </script>
