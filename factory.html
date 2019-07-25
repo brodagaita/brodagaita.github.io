@@ -1355,8 +1355,8 @@ The above copyright notice and this permission notice shall be included in all c
     }, (error, event) => {
       if (event.args._creator == web3.eth.accounts[0]) {
         console.log(event.args);
-        document.getElementById('modBod').innerHTML = "<p> Success! Contract " + event.args._token + " created. </p>";
-        document.getElementById('modFoot').innerHTML = ' <div class="left-side"> <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button> </div> <div class="divider"></div> <div class="right-side"> <button type="button" class="btn btn-danger btn-link">Use token</button> </div>';
+        document.getElementById('modBod').innerHTML = "<p> Success! Contract " + '<span id="newAdr">' + event.args._token + "</span> created. </p>";
+        document.getElementById('modFoot').innerHTML = ' <div class="left-side"> <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button> </div> <div class="divider"></div> <div class="right-side"> <button type="button" onclick="preLoad()" class="btn btn-danger btn-link">Use token</button> </div>';
       } else { }
     });
 
@@ -1371,7 +1371,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     function loadManage() {
-      document.getElementById('selectionSpace').innerHTML = '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract()"> Load </button> </center>';
+      document.getElementById('selectionSpace').innerHTML = '<div class="row" id="selector" style="margin-bottom: -4%;"><div class="col-md-4 ml-auto mr-auto"><div class="form-group"> <label for="exampleFormControlSelect2">Select a contract to interact with:</label><select multiple class="form-control" id="myTokens" onchange=""> </select><br><br></div></div></div><br><center><div class="row"><div class="col-md-4 ml-auto mr-auto"><p>Or input the address of a Contract not on the list: &nbsp; &nbsp;</p><input type="text" id="contractInput" style="width: 70%"><br><small style="max-width: 70%;">Contract must follow the SocialToken pattern.</small></div></div></center><center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract(false)"> Load </button> </center>';
       getUserTokens();
     }
 
@@ -1421,7 +1421,7 @@ The above copyright notice and this permission notice shall be included in all c
       $('#foundationModal').modal('toggle');
     }
 
-    function loadSelectedContract() {
+    function loadSelectedContract(adr) {
       document.getElementById('dashboard').innerHTML = tokenDashboard;
       setTimeout(function () {
         if (document.getElementById('contractInput').value == "") {
@@ -1430,10 +1430,13 @@ The above copyright notice and this permission notice shall be included in all c
           Token = TokenContract.at(contractAddress);
           buildTokenDashboard();
         }
+        else if (adr != false) {
+          Token = TokenContract.at(adr);
+          buildTokenDashboard();
+        }
         else {
           contractAddress = document.getElementById('contractInput').value;
           Token = TokenContract.at(contractAddress);
-          console.log('else', contractAddress);
           buildTokenDashboard(Token);
         }
       }, 500);
@@ -1491,6 +1494,10 @@ The above copyright notice and this permission notice shall be included in all c
 
     function openUpdateCap() {
       $('#capModal').modal('toggle');
+    }
+
+    function preLoad() {
+      loadSelectedContract(document.getElementById('newAdr').innerHTML);
     }
 
     function burn() {
