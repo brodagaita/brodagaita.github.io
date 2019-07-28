@@ -1585,7 +1585,9 @@ The above copyright notice and this permission notice shall be included in all c
     };
 
     function send() {
-      var tx = Token.transfer(document.getElementById('tokenVal').value, document.getElementById('receiverVal').value, {
+      var nTokens = document.getElementById('tokenVal').value;
+      var receiverAddress = document.getElementById('receiverVal').value;
+      var tx = Token.transfer(nTokens, receiverAddress, {
         from: web3.eth.accounts[0],
         to: factoryAddress,
         data: ""
@@ -1702,7 +1704,7 @@ The above copyright notice and this permission notice shall be included in all c
       )
     }
 
-    function changeWhiteListStatus() {
+    function changeWhitelistStatus() {
       var tx = Token.changeWhiteListStatus(document.getElementById('whitelistStatusVal').value, {
         from: web3.eth.accounts[0],
         to: factoryAddress,
