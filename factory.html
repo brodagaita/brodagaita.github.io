@@ -252,7 +252,9 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
         <br>
         <div style="width: 100%">
+          <center>
             <p id="whitelistStatus"></p>
+          </center>
           <br>
         </div>
       </div>
@@ -1478,6 +1480,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     function openFoundationOptions() {
       $('#foundationModal').modal('toggle');
+      whitelistStatus();
     }
 
     function loadSelectedContract(adr) {
@@ -1718,10 +1721,10 @@ The above copyright notice and this permission notice shall be included in all c
     function whitelistStatus() {
       Token.whitelistActive((error, active) => {
          if (active) {
-           document.getElementById('whitelistStatus').innerHTML = "Whitelist is enabled. Click <a onclick='javascript:changeWhitelistStatus()'> here </a> to disable;";
+           document.getElementById('whitelistStatus').innerHTML = "Whitelist is enabled. Click <button style='background-color: transparent; border: none;' onclick='changeWhitelistStatus()'> here </button> to disable;";
          }
          else {
-          document.getElementById('whitelistStatus').innerHTML = "Whitelist is disabled. Click <a onclick='javascript:changeWhitelistStatus()'> here </a>  to enable.";
+          document.getElementById('whitelistStatus').innerHTML = "Whitelist is disabled. Click <button style='background-color: transparent; border: none;' onclick='changeWhitelistStatus()'> here </button>  to enable.";
          }
       });
     }
