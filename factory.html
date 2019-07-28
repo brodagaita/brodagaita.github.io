@@ -1587,7 +1587,7 @@ The above copyright notice and this permission notice shall be included in all c
     function send() {
       var nTokens = document.getElementById('tokenVal').value;
       var receiverAddress = document.getElementById('receiverVal').value;
-      var tx = Token.transfer(nTokens, receiverAddress, {
+      var tx = Token.transfer(receiverAddress, nTokens, {
         from: web3.eth.accounts[0],
         to: factoryAddress,
         data: ""
