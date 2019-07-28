@@ -1705,7 +1705,7 @@ The above copyright notice and this permission notice shall be included in all c
     }
 
     function changeWhitelistStatus() {
-      var tx = Token.changeWhiteListStatus(document.getElementById('whitelistStatusVal').value, {
+      var tx = Token.changeWhitelistStatus({
         from: web3.eth.accounts[0],
         to: factoryAddress,
         data: ""
