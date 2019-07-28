@@ -250,7 +250,12 @@ The above copyright notice and this permission notice shall be included in all c
             <br>
           </div>
         </div>
-
+        <br>
+        <div style="width: 100%">
+            <p id="whitelistStatus"></p>
+          <br>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -298,7 +303,7 @@ The above copyright notice and this permission notice shall be included in all c
           </button>
         </div>
         <div class="modal-body">
-          <p>Remember that only whitelisted addresses can receive tokens by default. You can disable the whitelist in "Foundation Option".</p>
+          <p>Remember that only whitelisted addresses can receive tokens by default. You can disable the whitelist in "Foundation Options".</p>
           <br>
           <center>
             <label>Number of tokens to send: </label>
@@ -1328,7 +1333,7 @@ The above copyright notice and this permission notice shall be included in all c
       }
     ]
     );
-    var factoryAddress = "0xaac96f367e6e80e2613f45284e02ac6590113c5f";
+    var factoryAddress = "0xe6142e959981c671555e3633a06036291e5e7972";
     var Factory = FactoryContract.at(factoryAddress);
 
 
@@ -1685,6 +1690,17 @@ The above copyright notice and this permission notice shall be included in all c
         }
       }
       )
+    }
+
+    function whitelistStatus() {
+      Token.whitelistActive((error, active) => {
+         if (active) {
+           document.getElementById('whitelistStatus').innerHTML = "Whitelist is enabled. Click <a onclick='javascript:changeWhitelistStatus()'> here </a> to disable;";
+         }
+         else {
+          document.getElementById('whitelistStatus').innerHTML = "Whitelist is disabled. Click <a onclick='javascript:changeWhitelistStatus()'> here </a>  to enable.";
+         }
+      });
     }
 
     function addCode(code) {
