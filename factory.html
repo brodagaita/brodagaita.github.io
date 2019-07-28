@@ -305,7 +305,7 @@ The above copyright notice and this permission notice shall be included in all c
           </button>
         </div>
         <div class="modal-body">
-          <p>Remember that only whitelisted addresses can receive tokens by default. You can disable the whitelist in "Foundation Options".</p>
+          <p>Remember that only whitelisted addresses can receive tokens by default. You access whitelist settings in "Foundation Options".</p>
           <br>
           <center>
             <label>Number of tokens to send: </label>
@@ -1358,7 +1358,7 @@ The above copyright notice and this permission notice shall be included in all c
       }
     ]
     );
-    var factoryAddress = "0xa0ee8a9b55043440a79c825dba09be69c3f9b092";
+    var factoryAddress = "0xd20867eccf06b2e2924fcfad340e73329f10f757";
     var Factory = FactoryContract.at(factoryAddress);
 
 
@@ -1371,9 +1371,24 @@ The above copyright notice and this permission notice shall be included in all c
       dec = document.getElementById('decimals').value;
       cp = document.getElementById('cap').value;
       sup = document.getElementById('supply').value;
-      txs = document.getElementById('maxTxs').value;
-      tme = document.getElementById('maxTime').value;
-      adr = document.getElementById('maxAddresses').value;
+      if (document.getElementById('maxTxs').value == "") {
+        txs = 1000;
+      }
+      else {
+        txs = document.getElementById('maxTxs').value;
+      }
+      if (document.getElementById('maxTime').value == "") {
+        tme = 12;
+      }
+      else {
+        txs = document.getElementById('maxTime').value;
+      }
+      if (document.getElementById('maxAddresses').value == "") {
+        adr = 100;
+      }
+      else {
+        adr = document.getElementById('maxAddresses').value;
+      }
       saf = !(document.getElementById('safety').checked);
       for (var i = 0; i < 4; i++) {
         if (document.getElementById(String('fnd' + (i + 1))) == null) {
@@ -1739,6 +1754,8 @@ The above copyright notice and this permission notice shall be included in all c
 
     Token.allEvents({ fromBlock: web3.eth.defaultBlock }, (error, event) => { $("#loadingModal").modal("hide"); alert("Update successful.") })
 
+// whitelist associated
+// Blank default values
 
   </script>
 
