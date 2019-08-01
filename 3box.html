@@ -17,7 +17,7 @@
             await ethereum.enable();
             web3.eth.sendTransaction({ });
         } catch (error) {
-            web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+            web3 = new Web3(web3.currentProvider);
         }
     }
     else if (window.web3) {
@@ -25,7 +25,7 @@
         web3.eth.sendTransaction({/* ... */ });
     }
     else {
-        web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/d81a3501521247ce9a510f4e8317219b"));
+        web3 = new Web3(web3.currentProvider);
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 });
