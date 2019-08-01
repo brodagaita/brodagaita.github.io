@@ -294,7 +294,7 @@ The above copyright notice and this permission notice shall be included in all c
             var table = document.getElementById('vaccinesTable');
             for (i = 0; i < list.length; i++) {
                 var tr = document.createElement('TR');
-                for (j = 0; j < stock[i].length; j++) {
+                for (j = 0; j < list[i].length; j++) {
                     var td = document.createElement('TD')
                     td.appendChild(document.createTextNode(list[i][j]));
                     tr.appendChild(td)
