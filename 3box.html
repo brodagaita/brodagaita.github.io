@@ -292,10 +292,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function fillCard(list) {
             var table = document.getElementById('vaccinesTable');
-            list.sort(function(a,b) {
-               return Date.parse(a[0]) > Date.parse(b[0]);
-            }).then(function() {
-                for (i = 0; i < list.length; i++) {
+            for (i = 0; i < list.length; i++) {
                 var tr = document.createElement('TR');
                 for (j = 0; j < list[i].length; j++) {
                     var td = document.createElement('TD')
@@ -304,7 +301,6 @@ The above copyright notice and this permission notice shall be included in all c
                 }
                 table.appendChild(tr);
             }
-            })
         }
 
         function logged() {
@@ -322,8 +318,11 @@ The above copyright notice and this permission notice shall be included in all c
                 space = newSpace;
                 if (load) {
                     space.private.get('vaccine-list').then(function (list) {
-                    fillCard(list)
-                })
+                        list.sort(function (a, b) {
+                            return Date.parse(a[0]) > Date.parse(b[0]);
+                        })
+                        fillCard(list)
+                    })
                 }
             })
         }
