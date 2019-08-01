@@ -187,14 +187,20 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
 
 
-    <!-- Burn Modal -->
+    <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                    <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Success!</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
                 <div class="modal-body">
                     <center>
-                        <h3>Vaccine registered successfully</h3>
+                        <h4>Vaccine registered successfully.</h3>
                     </center>
                 </div>
 
@@ -319,7 +325,7 @@ The above copyright notice and this permission notice shall be included in all c
                 if (load) {
                     space.private.get('vaccine-list').then(function (list) {
                         list.sort(function (a, b) {
-                            return Date.parse(a[0]) > Date.parse(b[0]);
+                            return Date.parse(a[0]) - Date.parse(b[0]);
                         })
                         fillCard(list)
                     })
