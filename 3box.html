@@ -188,25 +188,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     <!-- Burn Modal -->
-    <div class="modal fade" id="burnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Burn tokens</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="modal-body">
                     <center>
-                        <label>Number of tokens to burn: </label>
-                        <input type="number" id="burnVal">
-                        <br>
-                        <small>Only tokens from the Chairperson's account can be burned.</small>
-                        <br>
-                        <br>
-                        <button class="btn btn-info btn-md" onclick="burn()">Update</button>
+                        <h3>Vaccine registered successfully</h3>
                     </center>
                 </div>
 
@@ -269,7 +257,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function buildCard() {
             if (logged()) {
-                document.getElementById('selectionSpace').innerHTML = ' <center> <table class="table" style="max-width: 70%;"> <thead> <tr> <th scope="col">Date</th> <th scope="col">Vaccine Name</th> <th scope="col">Location</th> <th scope="col">Additional Data</th> </tr> </thead> <tbody> </tbody> </table> </center>';
+                document.getElementById('selectionSpace').innerHTML = ' <center> <table class="table" style="max-width: 70%;"> <thead> <tr> <th scope="col">Date</th> <th scope="col">Vaccine Name</th> <th scope="col">Location</th> <th scope="col">Additional Data</th> </tr> </thead> <tbody id="vaccinesTable"> </tbody> </table> </center>';
                 openSpace(true);
             }
             else {
@@ -284,22 +272,35 @@ The above copyright notice and this permission notice shall be included in all c
             var location = document.getElementById('vaccineLocation').value;
             var data = document.getElementById('vaccineData').value;
             var updatedVaccineList = [];
-            space.private.get('vaccine-list').then(function(list) {
+            space.private.get('vaccine-list').then(function (list) {
                 if (list == undefined) {
                     updatedVaccineList = [];
                     updatedVaccineList.push([date, name, location, data]);
-                    space.private.set('vaccine-list', updatedVaccineList);
+                    space.private.set('vaccine-list', updatedVaccineList).then(function () {
+                        openSuccessModal();
+                    });
                 }
                 else {
                     updatedVaccineList = list;
                     updatedVaccineList.push([date, name, location, data]);
-                    space.private.set('vaccine-list', updatedVaccineList);
+                    space.private.set('vaccine-list', updatedVaccineList).then(function () {
+                        openSuccessModal();
+                    });
                 }
             })
         }
 
-        function fillCard() {
-            console.log('filling');
+        function fillCard(list) {
+            var table = document.getElementById('vaccinesTable');
+            for (i = 0; i < list.length; i++) {
+                var tr = document.createElement('TR');
+                for (j = 0; j < stock[i].length; j++) {
+                    var td = document.createElement('TD')
+                    td.appendChild(document.createTextNode(list[i][j]));
+                    tr.appendChild(td)
+                }
+                table.appendChild(tr);
+            }
         }
 
         function logged() {
@@ -317,16 +318,20 @@ The above copyright notice and this permission notice shall be included in all c
                 space = newSpace;
             })
             if (load) {
-                space.private.get('vaccine-list').then(function(list) {
+                space.private.get('vaccine-list').then(function (list) {
                     fillCard(list)
                 })
             }
         }
 
-        setTimeout(function() {
+        setTimeout(function () {
             logIn();
 
-        },300)
+        }, 300)
+
+        function openSuccessModal() {
+            $('#successModal').modal('toggle');
+        }
 
     </script>
 
