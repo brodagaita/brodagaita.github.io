@@ -287,10 +287,14 @@ The above copyright notice and this permission notice shall be included in all c
             space.private.get('vaccine-list').then(function(list) {
                 if (list == undefined) {
                     updatedVaccineList = [];
+                    updatedVaccineList.push([date, name, location, data]);
+                    space.private.set('vaccine-list', updatedVaccineList);
                 }
-                updatedVaccineList = list;
-                updatedVaccineList.push([date, name, location, data]);
-                space.private.set('vaccine-list', updatedVaccineList);
+                else {
+                    updatedVaccineList = list;
+                    updatedVaccineList.push([date, name, location, data]);
+                    space.private.set('vaccine-list', updatedVaccineList);
+                }
             })
         }
 
