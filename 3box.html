@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script type="text/javascript" src="./3box.js"></script>
     <script>
-    
-    window.addEventListener('load', async () => {
-    if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
-        try {
-            await ethereum.enable();
-            web3.eth.sendTransaction({ });
-        } catch (error) {
-            web3 = new Web3(web3.currentProvider);
-        }
-    }
-    else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider);
-        web3.eth.sendTransaction({/* ... */ });
-    }
-    else {
-        web3 = new Web3(web3.currentProvider);
-        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-    }
-});
 
-    function logged() {
-       return Box.isLoggedIn(web3.eth.accounts[0]);
-    }
-    
+        window.addEventListener('load', async () => {
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    await ethereum.enable();
+                    web3.eth.sendTransaction({});
+                } catch (error) {
+                    web3 = new Web3(web3.currentProvider);
+                }
+            }
+            else if (window.web3) {
+                window.web3 = new Web3(web3.currentProvider);
+                web3.eth.sendTransaction({/* ... */ });
+            }
+            else {
+                web3 = new Web3(web3.currentProvider);
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
+        });
+
+
+        var box, space;
+
+
+        function logged() {
+            return Box.isLoggedIn(web3.eth.accounts[0]);
+        }
+
+        function logIn() {
+            Box.openBox(web3.eth.accounts[0], window.ethereum).then(function(userBox) {
+                box = userBox;
+            })
+        }
+
+        function openSpace() {
+            box.openSpace('contracts').then(function(newSpace) {
+                space = newSpace;
+            })
+        }
+
     </script>
 </body>
-</html>
 
+</html>
