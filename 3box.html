@@ -246,7 +246,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function loadAdd() {
             if (logged()) {
-                document.getElementById('selectionSpace').innerHTML = ' <center> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Name of the vaccine: &nbsp; &nbsp;</p><input type="text" id="vaccineName" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Date taken: &nbsp; &nbsp;</p><input type="text" id="vaccineDate" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Location: &nbsp; &nbsp;</p><input type="text" id="vaccineLocation" style="width: 70%"><br> </div> </div><br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Additional data: &nbsp; &nbsp;</p><input type="text" id="vaccineData" style="width: 70%"><br> </div> </div>  </div> </center> <center><br> <button class="btn btn-info btn-sm" onclick="addVaccine()"> Add </button> </center> <br>';
+                document.getElementById('selectionSpace').innerHTML = ' <center> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Name of the vaccine: &nbsp; &nbsp;</p><input type="text" id="vaccineName" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Date taken: &nbsp; &nbsp;</p><input type="date" id="vaccineDate" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Location: &nbsp; &nbsp;</p><input type="text" id="vaccineLocation" style="width: 70%"><br> </div> </div><br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Additional data: &nbsp; &nbsp;</p><input type="text" id="vaccineData" style="width: 70%"><br> </div> </div>  </div> </center> <center><br> <button class="btn btn-info btn-sm" onclick="addVaccine()"> Add </button> </center> <br>';
                 openSpace(false);
             }
             else {
@@ -292,7 +292,10 @@ The above copyright notice and this permission notice shall be included in all c
 
         function fillCard(list) {
             var table = document.getElementById('vaccinesTable');
-            for (i = 0; i < list.length; i++) {
+            list.sort(function(a,b) {
+               return Date.parse(a[0]) > Date.parse(b[0]);
+            }).then(function() {
+                for (i = 0; i < list.length; i++) {
                 var tr = document.createElement('TR');
                 for (j = 0; j < list[i].length; j++) {
                     var td = document.createElement('TD')
@@ -301,6 +304,7 @@ The above copyright notice and this permission notice shall be included in all c
                 }
                 table.appendChild(tr);
             }
+            })
         }
 
         function logged() {
