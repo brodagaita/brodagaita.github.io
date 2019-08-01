@@ -316,12 +316,12 @@ The above copyright notice and this permission notice shall be included in all c
         function openSpace(load) {
             box.openSpace('vaccines').then(function (newSpace) {
                 space = newSpace;
-            })
-            if (load) {
-                space.private.get('vaccine-list').then(function (list) {
+                if (load) {
+                    space.private.get('vaccine-list').then(function (list) {
                     fillCard(list)
                 })
-            }
+                }
+            })
         }
 
         setTimeout(function () {
