@@ -258,7 +258,7 @@ The above copyright notice and this permission notice shall be included in all c
 
         function loadAdd() {
             if (logged()) {
-                document.getElementById('selectionSpace').innerHTML = ' <center> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Name of the vaccine: &nbsp; &nbsp;</p><input type="text" id="vaccineName" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Date taken: &nbsp; &nbsp;</p><input type="text" id="vaccineDate" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Location: &nbsp; &nbsp;</p><input type="text" id="vaccineLocation" style="width: 70%"><br> </div> </div><br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Additional data: &nbsp; &nbsp;</p><input type="text" id="vaccineData" style="width: 70%"><br> </div> </div>  </div> </center> <center><br> <button class="btn btn-info btn-sm" onclick="loadSelectedContract(false)"> Add </button> </center> <br>';
+                document.getElementById('selectionSpace').innerHTML = ' <center> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Name of the vaccine: &nbsp; &nbsp;</p><input type="text" id="vaccineName" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Date taken: &nbsp; &nbsp;</p><input type="text" id="vaccineDate" style="width: 70%"><br> </div> </div> <br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Location: &nbsp; &nbsp;</p><input type="text" id="vaccineLocation" style="width: 70%"><br> </div> </div><br> <div class="row"> <div class="col-md-4 ml-auto mr-auto"> <p>Additional data: &nbsp; &nbsp;</p><input type="text" id="vaccineData" style="width: 70%"><br> </div> </div>  </div> </center> <center><br> <button class="btn btn-info btn-sm" onclick="addVaccine()"> Add </button> </center> <br>';
                 openSpace(false);
             }
             else {
@@ -278,15 +278,17 @@ The above copyright notice and this permission notice shall be included in all c
             }
         }
 
-        function openSpace(load) {
-            box.openSpace('vaccines').then(function (newSpace) {
-                space = newSpace;
+        function addVaccine() {
+            var name = document.getElementById('vaccineName');
+            var date = document.getElementById('vaccineDate');
+            var location = document.getElementById('vaccineLocation');
+            var data = document.getElementById('vaccineData');
+            var updatedVaccineList = [];
+            space.private.get('vaccine-list').then(function(list) {
+                updatedVaccineList = list;
+                updatedVaccineList.push([date, name, location, data]);
+                space.private.set('vaccine-list', updatedVaccineList);
             })
-            if (load) {
-                space.private.get('vaccine-list').then(function(list) {
-                    fillCard(list)
-                })
-            }
         }
 
         function fillCard() {
@@ -303,6 +305,16 @@ The above copyright notice and this permission notice shall be included in all c
             })
         }
 
+        function openSpace(load) {
+            box.openSpace('vaccines').then(function (newSpace) {
+                space = newSpace;
+            })
+            if (load) {
+                space.private.get('vaccine-list').then(function(list) {
+                    fillCard(list)
+                })
+            }
+        }
 
         logIn();
 
