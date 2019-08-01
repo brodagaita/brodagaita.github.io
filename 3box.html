@@ -279,10 +279,10 @@ The above copyright notice and this permission notice shall be included in all c
         }
 
         function addVaccine() {
-            var name = document.getElementById('vaccineName');
-            var date = document.getElementById('vaccineDate');
-            var location = document.getElementById('vaccineLocation');
-            var data = document.getElementById('vaccineData');
+            var name = document.getElementById('vaccineName').value;
+            var date = document.getElementById('vaccineDate').value;
+            var location = document.getElementById('vaccineLocation').value;
+            var data = document.getElementById('vaccineData').value;
             var updatedVaccineList = [];
             space.private.get('vaccine-list').then(function(list) {
                 if (list == undefined) {
