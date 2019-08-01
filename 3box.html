@@ -304,6 +304,7 @@ The above copyright notice and this permission notice shall be included in all c
                 var tr = document.createElement('TR');
                 for (j = 0; j < list[i].length; j++) {
                     if (j == 0) {
+                        var date = new Date(list[i][j]);
                         list[i][j] = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
                     }
                     var td = document.createElement('TD')
