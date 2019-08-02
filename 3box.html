@@ -525,7 +525,16 @@ The above copyright notice and this permission notice shall be included in all c
         setTimeout(function () {
             logIn();
 
-        }, 300)
+        }, 300);
+
+
+        function forMediumOnly() {
+
+            box.openSpace('healthcare-records').then(function (newSpace) {
+                space = newSpace;
+            })
+
+        }
 
     </script>
 
