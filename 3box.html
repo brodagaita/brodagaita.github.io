@@ -244,7 +244,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
     </div>
 
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="checkpointModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -423,7 +423,7 @@ The above copyright notice and this permission notice shall be included in all c
                 "inputs": [
                     {
                         "name": "_latestHash",
-                        "type": "bytes32"
+                        "type": "string"
                     }
                 ],
                 "name": "registerHash",
@@ -453,10 +453,12 @@ The above copyright notice and this permission notice shall be included in all c
         }, (error, event) => {
             if (!error) {
                 $('#loadingModal').modal('hide');
+                $('#checkpointModal').modal('toggle');
             } else { }
         });
 
         function createCheckpoint() {
+            $('#successModal').modal('hide');
             space.private.get('vaccine-list').then(async function (blob) {
                 var b = String(blob);
                 const buf = await new Response(b).arrayBuffer();
