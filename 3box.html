@@ -153,7 +153,7 @@ The above copyright notice and this permission notice shall be included in all c
 
             </div>
         </div>
-
+<div id="integrity"></div>
         <div id="selectionSpace">
 
 
@@ -366,6 +366,7 @@ The above copyright notice and this permission notice shall be included in all c
                     tr.appendChild(td)
                 }
                 table.appendChild(tr);
+                pullIntegrityHash();
             }
         }
 
@@ -411,7 +412,7 @@ The above copyright notice and this permission notice shall be included in all c
                 "outputs": [
                     {
                         "name": "",
-                        "type": "bytes32"
+                        "type": "string"
                     }
                 ],
                 "payable": false,
@@ -504,8 +505,17 @@ The above copyright notice and this permission notice shall be included in all c
                 for (let i = 0; i < hashd.byteLength; i += 4) {
                     result += view.getUint32(i).toString(16).padStart(2, '0');
                 }
-                console.log(integrityHash == result);
+                reportIntegrity(integrityHash == result);
             })
+        }
+
+        function reportIntegrity(bool) {
+            if (bool) {
+               document.getElementById('integrity').innerHTML = "<h6> Integrity of data succesfully verified on-chain. </h6>"
+            }
+            else {
+                document.getElementById('integrity').innerHTML = "<h6> We could not confirm the integrity of the information on-chain. The data may be compromised. </h6>"
+            }
         }
 
         setTimeout(function () {
