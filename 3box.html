@@ -511,10 +511,12 @@ The above copyright notice and this permission notice shall be included in all c
 
         function reportIntegrity(bool) {
             if (bool) {
-               document.getElementById('selectionSpace').innerHTML = "<center><p style='color: green;'> <b>Integrity of data succesfully verified on-chain. </b></p> </center><br>" + document.getElementById('selectionSpace').innerHTML;
+                var toAdd = "<center><p style='color: green;'> <b>Integrity of data succesfully verified on-chain. </b></p> </center><br>" + document.getElementById('selectionSpace').innerHTML;
+               document.getElementById('selectionSpace').innerHTML = toAdd;
             }
             else {
-                document.getElementById('selectionSpace').innerHTML = "<center><p style='color: red;> <b>We could not confirm the integrity of the information on-chain. The data may be compromised or in need of checkpointing.</b> </p></center> <br>" + document.getElementById('selectionSpace').innerHTML;
+                var addition = "<center><p style='color: red;> <b>We could not confirm the integrity of the information on-chain. The data may be compromised or in need of checkpointing.</b> </p></center> <br>" + document.getElementById('selectionSpace').innerHTML;
+                document.getElementById('selectionSpace').innerHTML = addition;
             }
         }
 
