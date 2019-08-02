@@ -244,6 +244,28 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
     </div>
 
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Success!</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <h5>Checkpoint registered successfully.</h5>
+                </center>
+                <br>
+            </div>
+            <br>
+
+        </div>
+    </div>
+</div>
+
 
 
     <!--   Core JS Files   -->
@@ -462,6 +484,26 @@ The above copyright notice and this permission notice shall be included in all c
                 }
             }
             )
+        }
+
+        function pullIntegrityHash() {
+            HashCheckpoint.checkpointHash(web3.eth.accounts[0], (error, result) => {
+                checkIntegrity(result);
+            });
+        }
+
+        function checkIntegrity(integrityHash) {
+            space.private.get('vaccine-list').then(async function (blob) {
+                var b = String(blob);
+                const buf = await new Response(b).arrayBuffer();
+                const hashd = await crypto.subtle.digest("SHA-256", buf);
+                let result = '';
+                const view = new DataView(hashd);
+                for (let i = 0; i < hashd.byteLength; i += 4) {
+                    result += view.getUint32(i).toString(16).padStart(2, '0');
+                }
+                return (integrityHash == result);
+            })
         }
 
         setTimeout(function () {
