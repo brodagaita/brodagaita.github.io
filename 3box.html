@@ -195,17 +195,26 @@ The above copyright notice and this permission notice shall be included in all c
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                    <div class="modal-header">
-                            <h4 class="modal-title" id="exampleModalLabel">Success!</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Success!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <center>
                         <h5>Vaccine registered successfully.</h5>
                     </center>
                     <br>
+                </div>
+                <div class="modal-footer">
+                    <div class="left-side"> <button type="button" class="btn btn-default btn-link"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="right-side"> <button type="button" onclick="createCheckpoint()"
+                            class="btn btn-danger btn-link">Create Checkpoint</button>
+                    </div>
                 </div>
                 <br>
 
@@ -213,7 +222,27 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
     </div>
 
+    <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Processing transaction</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <div id="spinning-circle">
+                            <img src="http://i.stack.imgur.com/WbNlQ.jpg">
+                        </div>
+                    </center>
+                </div>
 
+            </div>
+        </div>
+    </div>
 
 
 
@@ -342,14 +371,103 @@ The above copyright notice and this permission notice shall be included in all c
             })
         }
 
+        function openSuccessModal() {
+            $('#successModal').modal('toggle');
+        }
+
+
+        var CheckpointContract = web3.eth.contract([
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "name": "checkpointHash",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "bytes32"
+                    }
+                ],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "constant": false,
+                "inputs": [
+                    {
+                        "name": "_latestHash",
+                        "type": "bytes32"
+                    }
+                ],
+                "name": "registerHash",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "name": "registered",
+                        "type": "bool"
+                    }
+                ],
+                "name": "LogSuccess",
+                "type": "event"
+            }
+        ]);
+        var checkpointAddress = "0xadf3bd5f31ff84e6116cdf7cc72be8c4528107ce";
+        var HashCheckpoint = CheckpointContract.at(checkpointAddress);
+
+        HashCheckpoint.allEvents({
+            fromBlock: web3.eth.defaultBlock
+        }, (error, event) => {
+            if (!error) {
+                $('#loadingModal').modal('hide');
+            } else { }
+        });
+
+        function createCheckpoint() {
+            space.private.get('vaccine-list').then(async function (blob) {
+                var b = String(blob);
+                const buf = await new Response(b).arrayBuffer();
+                const hashd = await crypto.subtle.digest("SHA-256", buf);
+                let result = '';
+                const view = new DataView(hashd);
+                for (let i = 0; i < hashd.byteLength; i += 4) {
+                    result += view.getUint32(i).toString(16).padStart(2, '0');
+                }
+                addToEthereum(result);
+            })
+        }
+
+        function addToEthereum(hash) {
+            var tx = HashCheckpoint.registerHash(hash, {
+                from: web3.eth.accounts[0],
+                to: checkpointAddress,
+                data: ""
+            }, function (err, transactionHash) {
+                if (!err) {
+                    $('#loadingModal').modal('toggle');
+                }
+                else {
+                    console.log(err);
+                }
+            }
+            )
+        }
+
         setTimeout(function () {
             logIn();
 
         }, 300)
-
-        function openSuccessModal() {
-            $('#successModal').modal('toggle');
-        }
 
     </script>
 
