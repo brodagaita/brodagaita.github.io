@@ -382,7 +382,7 @@ The above copyright notice and this permission notice shall be included in all c
         }
 
         function openSpace(load) {
-            box.openSpace('vaccines').then(function (newSpace) {
+            box.openSpace('healthcare-records').then(function (newSpace) {
                 space = newSpace;
                 if (load) {
                     space.private.get('vaccine-list').then(function (list) {
@@ -528,13 +528,6 @@ The above copyright notice and this permission notice shall be included in all c
         }, 300);
 
 
-        function forMediumOnly() {
-
-            box.openSpace('healthcare-records').then(function (newSpace) {
-                space = newSpace;
-            })
-
-        }
 
     </script>
 
