@@ -1752,7 +1752,12 @@ The above copyright notice and this permission notice shall be included in all c
       document.body.appendChild(JS);
     }
 
-    Token.allEvents({ fromBlock: web3.eth.defaultBlock }, (error, event) => { $("#loadingModal").modal("hide"); alert("Update successful.") })
+    Token.allEvents({ fromBlock: web3.eth.defaultBlock }, (error, event) => { 
+      if (!error) {
+        console.log(event);
+      }
+    });
+
 
 // whitelist associated
 // Blank default values
